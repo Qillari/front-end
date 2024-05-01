@@ -81,12 +81,26 @@
             class="width1"
           />
           <div v-show="yape" class="width1">
-            <p>1. Copia todos los productos que seleccionaste</p>
-            <p>2. yapeanos el monto total a este numero o al qr</p>
+            <p>1. Agrega tu correo electronico</p>
+            <p>2. Agrega la imagen del pago realizado a través de Yape.</p>
             <p>
-              3. Toma captura y mandanos todos los productos que elegiste a
-              nuestro numero oficial +51 941 238 451
+              3. Después, presiona el botón Enviar. Recibirás un correo
+              electrónico de confirmación de tu pedido con los productos
+              seleccionados
             </p>
+            <br />
+            <input
+              type="email"
+              name="correo"
+              placeholder="Correo electrónico"
+            />
+            <br />
+            <br />
+            <input type="file" name="adjunto" accept="image/*" @change="imagen_yape" />
+            <br />
+            <br />
+            <button v-if="imagen_de_pago">Enviar</button>
+            <br />
             <br />
             <div align="center" style="width: 100%">
               <img src="/yape.jpg" style="object-fit: contain; width: 50%" />
@@ -261,10 +275,12 @@ export default {
       name_street1: "",
       preciototal: 0,
       email: "",
+      telefono: "",
       carrito: [],
       form: false,
       yape: false,
       loading: false,
+      imagen_de_pago: null,
     };
   },
   methods: {
@@ -342,7 +358,7 @@ export default {
 
             this.loading = true;
             axios
-              .post("https://qillari-back.vercel.app/checkout", {
+              .post("https://backend-phi-gules.vercel.app/checkout", {
                 token,
                 issuer_id,
                 payment_method_id,
@@ -416,6 +432,35 @@ export default {
       }
       this.$bus.$emit("productoEliminado", this.carrito);
       this.$bus.$emit("precioeliminado", this.preciototal);
+    },
+    yape1() {
+      axios
+        .post("https://backend-phi-gules.vercel.app/yape", {
+          precio_total: this.preciototal,
+          description: this.carrito,
+          correo: this.correo,
+          telefono: this.telefono,
+          imagen: this.imagen,
+          
+        })
+        .then((response) => {
+          console.log(response);
+        });
+    },
+    async imagen_yape(event) {
+      const file = event.target.files[0];
+      const reader = new FileReader();
+
+      await new Promise((resolve, reject) => {
+        reader.onload = () => {
+          resolve();
+        };
+        reader.readAsDataURL(file);
+      });
+
+      // Obtener la URL base64 del archivo
+      this.imagen_de_pago = reader.result;
+      console.log(this.imagen_de_pago)
     },
   },
   watch: {
