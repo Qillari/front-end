@@ -99,7 +99,7 @@
             <input type="file" name="adjunto" accept="image/*" @change="imagen_yape" />
             <br />
             <br />
-            <button v-if="imagen_de_pago">Enviar</button>
+            <button v-if="imagen_de_pago" @click="yape1()">Enviar</button>
             <br />
             <br />
             <div align="center" style="width: 100%">
@@ -450,17 +450,13 @@ export default {
     async imagen_yape(event) {
       const file = event.target.files[0];
       const reader = new FileReader();
-
       await new Promise((resolve, reject) => {
         reader.onload = () => {
           resolve();
         };
         reader.readAsDataURL(file);
       });
-
-      // Obtener la URL base64 del archivo
       this.imagen_de_pago = reader.result;
-      console.log(this.imagen_de_pago)
     },
   },
   watch: {
