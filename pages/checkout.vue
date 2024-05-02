@@ -280,6 +280,7 @@ export default {
       preciototal: 0,
       email: "",
       telefono: "",
+      direccion: "",
       carrito: [],
       form: false,
       yape: false,
@@ -440,11 +441,12 @@ export default {
     yape1() {
       axios
         .post("https://backend-phi-gules.vercel.app/yape", {
-          precio_total: this.preciototal,
-          description: this.carrito,
+          preciototal: this.preciototal,
+          carrito: this.carrito,
           email: this.email,
           telefono: this.telefono,
-          imagen: this.imagen,
+          imagen_de_pago: this.imagen_de_pago,
+          direccion: this.direccion
           
         })
         .then((response) => {
