@@ -91,9 +91,13 @@
             <br />
             <input
               type="email"
-              name="correo"
+              name="email"
               placeholder="Correo electrónico"
+              v-model="email"
             />
+            <br />
+            <br />
+            <input type="text" id="telefono" name="telefono" pattern="[0-9]+" title="Solo se permiten números y el símbolo '+'" placeholder="+###-###-####" v-model="telefono">
             <br />
             <br />
             <input type="file" name="adjunto" accept="image/*" @change="imagen_yape" />
@@ -438,7 +442,7 @@ export default {
         .post("https://backend-phi-gules.vercel.app/yape", {
           precio_total: this.preciototal,
           description: this.carrito,
-          correo: this.correo,
+          correo: this.email,
           telefono: this.telefono,
           imagen: this.imagen,
           
@@ -498,5 +502,14 @@ export default {
       this.loadMercadoPago1();
     }
   },
+  setup() {
+    onMounted(() => {
+      document.getElementById('telefono').addEventListener('input', function() {
+        let input = this.value.replace(/[^\d\s]/g, '');
+        input = '+' + input; 
+        this.value = input;
+      });
+    });
+  }
 };
 </script>
