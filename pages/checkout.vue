@@ -100,6 +100,9 @@
             <input type="text" id="telefono" name="telefono" pattern="[0-9]+" title="Solo se permiten números y el símbolo '+'" placeholder="+###-###-####" v-model="telefono">
             <br />
             <br />
+            <input type="text" placeholder="dirección" v-model="direccion">
+            <br />
+            <br />
             <input type="file" name="adjunto" accept="image/*" @change="imagen_yape" />
             <br />
             <br />
@@ -445,8 +448,8 @@ export default {
           carrito: this.carrito,
           email: this.email,
           telefono: this.telefono,
+          direccion: this.direccion,
           imagen_de_pago: this.imagen_de_pago,
-          direccion: this.direccion
           
         })
         .then((response) => {
