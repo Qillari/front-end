@@ -442,7 +442,7 @@ export default {
         .post("https://backend-phi-gules.vercel.app/yape", {
           precio_total: this.preciototal,
           description: this.carrito,
-          correo: this.email,
+          email: this.email,
           telefono: this.telefono,
           imagen: this.imagen,
           
