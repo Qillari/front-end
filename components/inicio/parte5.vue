@@ -59,22 +59,20 @@
   transform-origin: left;
 }
 .close {
-      float: right;
-      font-weight: bold;
-      line-height: 20px;
-      color: #000;
-      text-shadow: 0 1px 0 #fff;
-      opacity: .2;
-    }
+  float: right;
+  font-weight: bold;
+  line-height: 20px;
+  color: #000;
+  text-shadow: 0 1px 0 #fff;
+  opacity: .2;
+}
 
-    .close:hover {
-      color: #000;
-      text-decoration: none;
-      cursor: pointer;
-      opacity: .5;
-    }
-
-
+.close:hover {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+  opacity: .5;
+}
 
 @keyframes loading {
   0% {
@@ -124,7 +122,6 @@ button {
 button:disabled {
   background-color: #999;
 }
-
 button:hover:not(:disabled) {
   background-color: #333;
 }

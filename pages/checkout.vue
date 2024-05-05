@@ -94,7 +94,7 @@
               name="email"
               placeholder="Correo electrónico"
               v-model="email"
-              class="email"
+              class="input"
             />
             <br />
             <br />
@@ -106,10 +106,11 @@
               title="Solo se permiten números y el símbolo '+'"
               placeholder="+###-###-####"
               v-model="telefono"
+              class="input"
             />
             <br />
             <br />
-            <input type="text" placeholder="dirección" v-model="direccion" />
+            <input type="text" placeholder="dirección" v-model="direccion" class="input" />
             <br />
             <br />
             <input
@@ -120,7 +121,7 @@
             />
             <br />
             <br />
-            <button @click="yape1()">Enviar</button>
+            <button @click="yape1()" class="button_check">Enviar</button>
             <br />
             <br />
             <div align="center" style="width: 100%">
@@ -241,6 +242,7 @@ button {
   cursor: pointer;
   transition: transform 0.3s ease, font-weight 0.3s ease;
   color: white;
+  width: 100%;
 }
 .button_check:hover {
   transform: scale(1.01);
