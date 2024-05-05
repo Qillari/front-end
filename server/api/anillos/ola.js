@@ -7,7 +7,8 @@ export default defineEventHandler(() => {
       "precio-deescuento": 66,
       "precio": 55,
       "fotos": [
-        { "src":"/productos-webp/anillos/ola.webp", "srcset": "/productos-webp/anillos/ola.webp 500w, /productos-webp/anillos/ola.webp 1000w"}
+        { "src":"/productos-webp/anillos/ola/ima1.webp", "srcset": "/productos-webp/anillos/ola/ima1.webp 500w, /productos-webp/anillos/ola/ima1.webp 1000w"},
+        { "src":"/productos-webp/anillos/ola/ima2.webp", "srcset": "/productos-webp/anillos/ola/ima2.webp 500w, /productos-webp/anillos/ola/ima2.webp 1000w"}
       ],
       "url": "/productos/anillos/ola"
     };

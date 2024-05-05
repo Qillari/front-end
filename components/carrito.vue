@@ -52,7 +52,7 @@
         </div>
         <div align="center">
           <h2>Precio Total: {{ preciototal }}</h2>
-          <NuxtLink to="/checkout">
+          <NuxtLink to="/checkout" @click="toggleSidebar">
             <button class="but1">COMPRAR</button>
           </NuxtLink>
         </div>

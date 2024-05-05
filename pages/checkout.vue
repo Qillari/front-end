@@ -94,23 +94,37 @@
               name="email"
               placeholder="Correo electrónico"
               v-model="email"
+              class="email"
             />
             <br />
             <br />
-            <input type="text" id="telefono" name="telefono" pattern="[0-9]+" title="Solo se permiten números y el símbolo '+'" placeholder="+###-###-####" v-model="telefono">
+            <input
+              type="text"
+              id="telefono"
+              name="telefono"
+              pattern="[0-9]+"
+              title="Solo se permiten números y el símbolo '+'"
+              placeholder="+###-###-####"
+              v-model="telefono"
+            />
             <br />
             <br />
-            <input type="text" placeholder="dirección" v-model="direccion">
+            <input type="text" placeholder="dirección" v-model="direccion" />
             <br />
             <br />
-            <input type="file" name="adjunto" accept="image/*" @change="imagen_yape" />
+            <input
+              type="file"
+              name="adjunto"
+              accept="image/*"
+              @change="imagen_yape"
+            />
             <br />
             <br />
-            <button v-if="imagen_de_pago" @click="yape1()">Enviar</button>
+            <button @click="yape1()">Enviar</button>
             <br />
             <br />
             <div align="center" style="width: 100%">
-              <img src="/yape.jpg" style="object-fit: contain; width: 50%" />
+              <img src="/yape.jpg" style="object-fit: contain; width: 70%" />
             </div>
           </div>
           <br />
@@ -345,10 +359,8 @@ export default {
               return console.warn(
                 "Form Mounted handling error: ",
                 error,
-                localStorage.setItem("mercadopago", true)
               );
             console.log("Form mounted");
-            localStorage.setItem("mercadopago", true);
           },
           onSubmit: async (event) => {
             event.preventDefault();
@@ -442,6 +454,7 @@ export default {
       this.$bus.$emit("precioeliminado", this.preciototal);
     },
     yape1() {
+      console.log(this.imagen_de_pago);
       axios
         .post("https://backend-phi-gules.vercel.app/yape", {
           preciototal: this.preciototal,
@@ -450,7 +463,6 @@ export default {
           telefono: this.telefono,
           direccion: this.direccion,
           imagen_de_pago: this.imagen_de_pago,
-          
         })
         .then((response) => {
           console.log(response);
@@ -482,12 +494,7 @@ export default {
       deep: true,
     },
   },
-  beforeMount() {
-    if (localStorage.getItem("mercadopago")) {
-      localStorage.removeItem("mercadopago");
-      location.reload();
-    }
-  },
+  beforeMount() {},
   mounted() {
     this.carrito = JSON.parse(localStorage.getItem("carrito") || "[]");
     this.preciototal = JSON.parse(localStorage.getItem("precioTotal") || 0);
@@ -503,18 +510,17 @@ export default {
     this.$bus.$on("precioTotal", (preciototal) => {
       this.preciototal = preciototal;
     });
-    if (!localStorage.getItem("mercadopago")) {
-      this.loadMercadoPago1();
-    }
   },
   setup() {
     onMounted(() => {
-      document.getElementById('telefono').addEventListener('input', function() {
-        let input = this.value.replace(/[^\d\s]/g, '');
-        input = '+' + input; 
-        this.value = input;
-      });
+      document
+        .getElementById("telefono")
+        .addEventListener("input", function () {
+          let input = this.value.replace(/[^\d\s]/g, "");
+          input = "+" + input;
+          this.value = input;
+        });
     });
-  }
+  },
 };
 </script>

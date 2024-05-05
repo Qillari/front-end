@@ -7,7 +7,8 @@ export default defineEventHandler(() => {
       "precio-deescuento": 66,
       "precio": 55,
       "fotos": [
-        { "src":"/productos-webp/anillos/entorchado.webp", "srcset": "/productos-webp/anillos/entorchado-cel.webp 500w, /productos-webp/anillos/entorchado.webp 1000w"}
+        { "src":"/productos-webp/anillos/entorchado/ima1.webp", "srcset": "/productos-webp/anillos/entorchado/ima1-cel.webp 500w, /productos-webp/anillos/entorchado/ima1.webp 1000w"},
+        { "src":"/productos-webp/anillos/entorchado/ima2.webp", "srcset": "/productos-webp/anillos/entorchado/ima2-cel.webp 500w, /productos-webp/anillos/entorchado/ima2.webp 1000w"},
       ],
       "url": "/productos/anillos/entorchado"
     };

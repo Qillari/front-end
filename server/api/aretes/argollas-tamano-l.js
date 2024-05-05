@@ -8,7 +8,8 @@ export default defineEventHandler(() => {
     "precio": 94,
     "fotos": [
       { "src":"/productos-webp/aretes/argollas-tamaño-l/ima1-opcion2.webp", "srcset": "/productos-webp/aretes/argollas-tamaño-l/ima1-cel-opcion2.webp 500w, /productos-webp/aretes/argollas-tamaño-l/ima1-opcion2.webp 1000w"},
-      { "src":"/productos-webp/aretes/argollas-tamaño-l/ima2", "srcset": "/productos-webp/aretes/argollas-tamaño-l/ima2-cel.webp 500w, /productos-webp/aretes/argollas-tamaño-l/ima2.webp 1000w"}
+      { "src":"/productos-webp/aretes/argollas-tamaño-l/ima2", "srcset": "/productos-webp/aretes/argollas-tamaño-l/ima2-cel.webp 500w, /productos-webp/aretes/argollas-tamaño-l/ima2.webp 1000w"},
+      { "src":"/productos-webp/aretes/argollas-tamaño-l/ima3", "srcset": "/productos-webp/aretes/argollas-tamaño-l/ima3-cel.webp 500w, /productos-webp/aretes/argollas-tamaño-l/ima3.webp 1000w"},
     ],
     "url": "/productos/aretes/argollas-tamano-l"
   };

@@ -148,10 +148,10 @@ export default {
         {
           id: "000001",
           nombre: "Anillo Aurora",
-          ima: "/productos/anillos/Aurora.jpg",
           alt: "Anillo Aurora",
+          ima: "/productos-webp/anillos/aurora.webp",
           srcset:
-            "/productos/anillos/Aurora.jpg 500w, /productos/anillos/Aurora.jpg 1000w",
+            "/productos-webp/anillos/aurora.webp 500w, /productos-webp/anillos/aurora.webp 1000w",
           link: "/productos/anillos/aurora",
           precio: 55,
           precio_descuento: 66,

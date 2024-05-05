@@ -20,6 +20,7 @@
             type="text"
             v-model="buscar"
             placeholder="Buscar"
+            @input="validate()"
           />
           <br />
           <br />
@@ -71,6 +72,7 @@
               type="text"
               v-model="buscar"
               placeholder="Buscar"
+              @input="validate()"
             />
             <br />
             <br />
@@ -108,13 +110,13 @@
             </button>
             <br />
             <br />
-            <NuxtLink to="/productos" class="link"> Productos (21) </NuxtLink>
+            <NuxtLink to="/productos" class="link"> Productos (20) </NuxtLink>
             <br />
             <NuxtLink to="/productos/anillos" class="link">
               Anillos (6)
             </NuxtLink>
             <br />
-            <NuxtLink to="/productos/aretes" class="link"> Aretes (5)</NuxtLink>
+            <NuxtLink to="/productos/aretes" class="link"> Aretes (4)</NuxtLink>
             <br />
             <NuxtLink to="/productos/collares" class="link">
               Collares (5)</NuxtLink
@@ -615,6 +617,9 @@ export default {
     aplicarFiltroPrecio() {
       this.currentPage = 1;
     },
+    validate() {
+      this.buscar = this.buscar.replace(/[^a-zA-Z0-9]/g, '');
+    }
   },
   mounted() {
     window.addEventListener("scroll", this.handleScroll1);

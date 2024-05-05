@@ -20,6 +20,7 @@
             type="text"
             v-model="buscar"
             placeholder="Buscar"
+            @input="validate()"
           />
           <br />
           <br />
@@ -72,6 +73,7 @@
               type="text"
               v-model="buscar"
               placeholder="Buscar"
+              @input="validate()"
             />
             <br />
             <br />
@@ -109,13 +111,13 @@
             </button>
             <br />
             <br />
-            <NuxtLink to="/productos" class="link"> Productos (21) </NuxtLink>
+            <NuxtLink to="/productos" class="link"> Productos (20) </NuxtLink>
             <br />
             <NuxtLink to="/productos/anillos" class="link">
               Anillos (6)
             </NuxtLink>
             <br />
-            <NuxtLink to="/productos/aretes" class="link"> Aretes (5)</NuxtLink>
+            <NuxtLink to="/productos/aretes" class="link"> Aretes (4)</NuxtLink>
             <br />
             <NuxtLink to="/productos/collares" class="link">
               Collares (5)</NuxtLink
@@ -424,9 +426,9 @@ export default {
         {
           id: "000001",
           nombre: "Anillo Aurora",
-          ima: "/productos/anillos/Aurora.jpg",
+          ima: "/productos-webp/anillos/aurora.webp",
           srcset:
-            "/productos/anillos/Aurora.jpg 500w, /productos/anillos/Aurora.jpg 1000w",
+            "/productos-webp/anillos/aurora.webp 500w, /productos-webp/anillos/aurora.webp 1000w",
           link: "/productos/anillos/aurora",
           precio: 55,
           precio_descuento: 66,
@@ -444,9 +446,9 @@ export default {
         {
           id: "000003",
           nombre: "Anillo Entorchado",
-          ima: "/productos-webp/anillos/entorchado.webp",
+          ima: "/productos-webp/anillos/entorchado/ima1.webp",
           srcset:
-            "/productos-webp/anillos/entorchado-cel.webp 500w, /productos-webp/anillos/entorchado.webp 1000w",
+            "/productos-webp/anillos/entorchado/ima1-cel.webp 500w, /productos-webp/anillos/entorchado/ima1.webp 1000w",
           link: "/productos/anillos/entorchado",
           precio: 55,
           precio_descuento: 66,
@@ -454,9 +456,9 @@ export default {
         {
           id: "000004",
           nombre: "Anillo Gaviota",
-          ima: "/productos-webp/anillos/gaviota.webp",
+          ima: "/productos-webp/anillos/gaviota/ima1.webp",
           srcset:
-            "/productos-webp/anillos/gaviota-cel.webp 500w, /productos-webp/anillos/gaviota.webp 1000w",
+            "/productos-webp/anillos/gaviota/ima1-cel.webp 500w, /productos-webp/anillos/gaviota/ima1.webp 1000w",
           link: "/productos/anillos/gaviota",
           precio: 55,
           precio_descuento: 66,
@@ -464,9 +466,9 @@ export default {
         {
           id: "000005",
           nombre: "Anillo Ola",
-          ima: "/productos/anillos/ola.jpg",
+          ima: "/productos-webp/anillos/ola/ima1.webp",
           srcset:
-            "/productos/anillos/ola.jpg 500w, /productos/anillos/ola.jpg 1000w",
+            "/productos-webp/anillos/ola/ima1.webp 500w, /productos-webp/anillos/ola/ima1.webp 1000w",
           link: "/productos/anillos/ola",
           precio: 55,
           precio_descuento: 66,
@@ -504,9 +506,9 @@ export default {
         {
           id: "000009",
           nombre: "Aretes perlas",
-          ima: "/productos/aretes/perlas.jpg",
+          ima: "/productos-webp/aretes/perlas.webp",
           srcset:
-            "/productos/aretes/perlas.jpg 500w, /productos/aretes/perlas.jpg 1000w",
+            "/productos-webp/aretes/perlas.webp 500w, /productos-webp/aretes/perlas.webp 1000w",
           link: "/productos/aretes/perlas",
           precio: 98,
           precio_descuento: 117.6,
@@ -520,16 +522,6 @@ export default {
           link: "/productos/aretes/punto-de-luz",
           precio: 78,
           precio_descuento: 93.6,
-        },
-        {
-          id: "000011",
-          nombre: "Aretes Sol Brillante",
-          ima: "/productos/aretes/sol-brillante.jpg",
-          srcset:
-            "/productos/aretes/sol-brillante.jpg 500w, /productos/aretes/sol-brillante.jpg 1000w",
-          link: "/productos/aretes/sol-brillante",
-          precio: 88,
-          precio_descuento: 105.6,
         },
         {
           id: "0000012",
@@ -705,7 +697,6 @@ export default {
       if (scrollDiv) {
         const rect = scrollDiv.getBoundingClientRect();
 
-        // Add or remove the fixed class based on the conditions
         if (rect.top <= 60) {
           this.isFixed = true;
         } else {
@@ -726,6 +717,9 @@ export default {
         (a, b) => parseFloat(b.precio) - parseFloat(a.precio)
       );
     },
+    validate() {
+      this.buscar = this.buscar.replace(/[^a-zA-Z0-9]/g, '');
+    }
   },
   mounted() {
     window.addEventListener("scroll", this.handleScroll1);

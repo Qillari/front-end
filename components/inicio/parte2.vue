@@ -8,7 +8,7 @@
           :key="producto"
           class="card"
           :style="{
-            'background-image': `linear-gradient(to right, rgba(255,255,255,0), rgba(255,255,255,0)), url(${producto.ima})`,
+            'background-image': `linear-gradient(to right, rgba(0,0,0,0.35), rgba(0,0,0,0.35)), url(${producto.ima})`,
           }"
           :to="producto.link"
           v-scrolls
@@ -127,8 +127,8 @@ export default {
           title: "",
         },
         {
-          nombre: "Pulsera",
-          ima: "/inicio/parte2/pulsera.webp",
+          nombre: "Pulseras",
+          ima: "/inicio/parte2/pulseras.webp",
           link: "/productos/pulseras",
           title: "",
         },
