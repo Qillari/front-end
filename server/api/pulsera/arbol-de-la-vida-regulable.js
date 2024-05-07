@@ -11,6 +11,7 @@ export default defineEventHandler(() => {
       { "src":"/productos-webp/pulseras/regulable-arbol-de-la-vida/ima2.webp", "srcset": "/productos-webp/pulseras/regulable-arbol-de-la-vida/ima2-cel.webp 500w, /productos-webp/pulseras/regulable-arbol-de-la-vida/ima2.webp 1000w"},
       { "src":"/productos-webp/pulseras/regulable-arbol-de-la-vida/ima3.webp", "srcset": "/productos-webp/pulseras/regulable-arbol-de-la-vida/ima3-cel.webp 500w, /productos-webp/pulseras/regulable-arbol-de-la-vida/ima3.webp 1000w"},
     ],
-    "url": "/productos/pulseras/arbol-de-la-vida-regulable"
+    "url": "/productos/pulseras/arbol-de-la-vida-regulable",
+    "stock": 1
   };
 });

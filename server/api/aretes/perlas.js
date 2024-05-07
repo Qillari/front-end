@@ -9,6 +9,7 @@ export default defineEventHandler(() => {
       "fotos": [
         {"src":"productos-webp/aretes/perlas.webp", "srcset": "/productos-webp/aretes/perlas-cel.webp 500w, /productos-webp/aretes/perlas.webp 1000w"}
       ],
-      "url": "/productos/aretes/perlas"
+      "url": "/productos/aretes/perlas",
+      "stock": 1
     };
 });

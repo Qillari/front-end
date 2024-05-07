@@ -9,6 +9,7 @@ export default defineEventHandler(() => {
       "fotos": [
         { "src":"/productos-webp/aretes/isabelle.webp", "srcset": "/productos-webp/aretes/isabelle-cel.webp 500w, /productos-webp/aretes/isabelle.webp 1000w"}
       ],
-      "url": "/productos/aretes/isabelle"
+      "url": "/productos/aretes/isabelle",
+      "stock": 1
     };
 });

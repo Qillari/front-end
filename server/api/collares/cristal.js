@@ -10,6 +10,7 @@ export default defineEventHandler(() => {
       { "src":"/productos-webp/collares/cristal/ima1.webp", "srcset": "/productos-webp/collares/cristal/ima1-cel.webp 500w, /productos-webp/collares/cristal/ima1.webp 1000w"},
       { "src":"/productos-webp/collares/cristal/ima2.webp", "srcset": "/productos-webp/collares/cristal/ima2-cel.webp 500w, /productos-webp/collares/cristal/ima2.webp 1000w"},
     ],
-    "url": "/productos/collares/cristal"
+    "url": "/productos/collares/cristal",
+    "stock": 1
   };
 });

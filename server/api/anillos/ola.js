@@ -10,6 +10,7 @@ export default defineEventHandler(() => {
         { "src":"/productos-webp/anillos/ola/ima1.webp", "srcset": "/productos-webp/anillos/ola/ima1.webp 500w, /productos-webp/anillos/ola/ima1.webp 1000w"},
         { "src":"/productos-webp/anillos/ola/ima2.webp", "srcset": "/productos-webp/anillos/ola/ima2.webp 500w, /productos-webp/anillos/ola/ima2.webp 1000w"}
       ],
-      "url": "/productos/anillos/ola"
+      "url": "/productos/anillos/ola",
+      "stock": 0
     };
   });

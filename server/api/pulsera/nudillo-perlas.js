@@ -9,6 +9,7 @@ export default defineEventHandler(() => {
       "fotos": [
         { "src":"/productos-webp/pulseras/nudillo-perlas.webp", "srcset": "/productos-webp/pulseras/nudillo-perlas-cel.webp 500w, /productos-webp/pulseras/nudillo-perlas.webp 1000w"}
       ],
-      "url": "/productos/pulseras/nudillo-perlas"
+      "url": "/productos/pulseras/nudillo-perlas",
+      "stock": 0
     };
   });

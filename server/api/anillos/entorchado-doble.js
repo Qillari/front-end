@@ -9,6 +9,7 @@ export default defineEventHandler(() => {
       "fotos": [
         { "src":"/productos-webp/anillos/entorchado-doble.webp", "srcset": "/productos-webp/anillos/entorchado-doble-cel.webp 500w, /productos-webp/anillos/entorchado-doble.webp 1000w"}
       ],
-      "url": "/productos/anillos/entorchado-doble"
+      "url": "/productos/anillos/entorchado-doble",
+      "stock": 1
     };
   });

@@ -11,5 +11,6 @@ export default defineEventHandler(() => {
         { "src":"/productos-webp/pulseras/saturno/ima2.webp", "srcset": "/productos-webp/pulseras/saturno/ima2-cel.webp 500w, /productos-webp/pulseras/saturno/ima2.webp 1000w"},
       ],
       "url": "/productos/pulseras/saturno",
+      "stock": 0
     };
   });

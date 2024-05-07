@@ -9,6 +9,7 @@ export default defineEventHandler(() => {
       "fotos": [
         { "src": "/productos/aretes/sol-brillante.jpg"}
       ],
-      "url": "/productos/aretes/sol-brillante"
+      "url": "/productos/aretes/sol-brillante",
+      "stock": 0
     };
 });

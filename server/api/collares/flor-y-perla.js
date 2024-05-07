@@ -10,6 +10,7 @@ export default defineEventHandler(() => {
         { "src":"/productos-webp/collares/flor-y-perla/ima1.webp", "srcset": "/productos-webp/collares/flor-y-perla/ima1-cel.webp 500w, /productos-webp/collares/flor-y-perla/ima1.webp 1000w"},
         { "src":"/productos-webp/collares/flor-y-perla/ima2.webp", "srcset": "/productos-webp/collares/flor-y-perla/ima2-cel.webp 500w, /productos-webp/collares/flor-y-perla/ima2.webp 1000w"}
       ],
-      "url": "/productos/collares/flor-y-perla"
+      "url": "/productos/collares/flor-y-perla",
+      "stock": 0
     };
 });

@@ -10,6 +10,7 @@ export default defineEventHandler(() => {
         { "src":"/productos-webp/collares/letra/ima1.webp", "srcset": "/productos-webp/collares/letra/ima1-cel.webp 500w, /productos-webp/collares/letra/ima1.webp 1000w"},
         { "src":"/productos-webp/collares/letra/ima2.webp", "srcset": "/productos-webp/collares/letra/ima2-cel.webp 500w, /productos-webp/collares/letra/ima2.webp 1000w"},
       ],
-      "url": "/productos/collares/letra"
+      "url": "/productos/collares/letra",
+      "stock": 0
     };
 });

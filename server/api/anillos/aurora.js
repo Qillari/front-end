@@ -9,6 +9,7 @@ export default defineEventHandler(() => {
       "fotos": [
         {"src": "/productos-webp/anillos/aurora.webp", "srcset": "/productos-webp/anillos/aurora.webp 500w, /productos-webp/anillos/aurora.webp 1000w"}
       ],
-      "url": "/productos/anillos/aurora"
+      "url": "/productos/anillos/aurora",
+      "stock": 0
     };
   });

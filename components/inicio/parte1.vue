@@ -11,9 +11,13 @@
         <swiper-slide>
           <div class="background1">
             <div class="container">
-              <div class="flex">
-                <h1>Brilla con elegancia</h1>
-                <button>Explora la colección</button>
+              <div class="row">
+                <div class="col-4">
+                  <div class="flex">
+                    <h1>Brilla con elegancia</h1>
+                    <button>Explora la colección</button>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -21,8 +25,12 @@
         <swiper-slide>
           <div class="background2">
             <div class="container">
-              <div class="flex">
-                <h2>Vínculos inquebrantables, joyas eternas</h2>
+              <div class="row">
+                <div class="col-4">
+                  <div class="flex">
+                    <h2>Vínculos inquebrantables, joyas eternas</h2>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -30,11 +38,13 @@
         <swiper-slide>
           <div class="background3">
             <div class="container">
-              <div class="flex">
-                <h2>
-                  Vínculos inquebrantables, joyas eternas
-                </h2>
-                <button>Descubre tu estilo</button>
+              <div class="row">
+                <div class="col-4">
+                  <div class="flex">
+                    <h2>Vínculos inquebrantables, joyas eternas</h2>
+                    <button>Descubre tu estilo</button>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -73,8 +83,8 @@
   }
 }
 @media screen and (min-width: 961px) {
-  .col-6 {
-    width: 50%;
+  .col-4 {
+    width: 33.3333%;
   }
   button:hover {
     transform: scale(1.2);
@@ -143,23 +153,20 @@ h2 {
 }
 .background1 {
   height: 100%;
-  object-fit: contain;
-  background-size: 100% auto;
-  object-position: 100% 10%;
+  background-size: cover;
+  background-position: top; 
   background-image: url("/inicio/parte1/ima2-webp-compu.webp");
 }
 .background2 {
   height: 100%;
-  object-fit: contain;
-  background-size: 100% auto;
-  object-position: 100% 10%;
+  background-size: cover;
+  background-position: 50% 10%; 
   background-image: url("/inicio/parte1/ima3-webp-compu.webp");
 }
 .background3 {
   height: 100%;
-  object-fit: contain;
-  background-size: 100% auto;
-  object-position: 100% 10%;
+  background-size: cover;
+  background-position: top; 
   background-image: url("/inicio/parte1/ima4-webp-compu.webp");
 }
 .flex {
@@ -169,21 +176,6 @@ h2 {
   height: 100%;
 }
 </style>
-
-<script>
-export default {
-  data() {
-    return {
-      fondos: ["red", "blue", "grey"],
-      fotos: [
-        "/inicio/parte1/ima2-webp-compu.webp",
-        "/inicio/parte1/ima3-webp-compu.webp",
-        "/inicio/parte1/ima4-webp-compu.webp",
-      ],
-    };
-  },
-};
-</script>
 
 <script setup>
 useHead({

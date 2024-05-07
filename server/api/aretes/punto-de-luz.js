@@ -9,6 +9,7 @@ export default defineEventHandler(() => {
       "fotos": [
         { "src":"/productos-webp/aretes/punto-de-luz.webp", "srcset": "/productos-webp/aretes/punto-de-luz-cel.webp 500w, /productos-webp/aretes/punto-de-luz.webp 1000w"}
       ],
-      "url": "/productos/aretes/punto-de-luz"
+      "url": "/productos/aretes/punto-de-luz",
+      "stock": 0
     };
 });

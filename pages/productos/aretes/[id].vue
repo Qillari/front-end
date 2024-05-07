@@ -15,6 +15,9 @@
       <div class="row">
         <div class="col-6 width1">
           <div class="padding">
+            <div class="alert" v-if="data.stock == 0">
+              <strong>¡Lo sentimos!</strong> Este producto está fuera de stock.
+            </div>
             <h1 align="center">
               {{ producto.nombre }}
             </h1>
@@ -25,14 +28,20 @@
               type="number"
               id="cantidad"
               name="cantidad"
+              min="0"
+              :max="data.stock"
               aria-label="cantidad"
-              min="1"
-              max="10"
               v-model="producto.amount"
               style="margin-bottom: 6px"
+              :disabled="data.stock == 0"
             />
             <div>
-              <button @click="añadir()" style="margin-right: 2px" class="button">
+              <button
+                @click="añadir()"
+                style="margin-right: 2px"
+                class="button"
+                :disabled="data.stock == 0"
+              >
                 añadir al carrito
               </button>
             </div>
@@ -41,7 +50,11 @@
         </div>
         <div class="col-6 width2" style="display: flex">
           <div class="cuadrado-imagen">
-            <img :src="producto.selectedImage.src" :srcset="producto.selectedImage.srcset" class="imagen" />
+            <img
+              :src="producto.selectedImage.src"
+              :srcset="producto.selectedImage.srcset"
+              class="imagen"
+            />
           </div>
           <div class="cuadrado-imagen2">
             <div
@@ -323,7 +336,7 @@ h3 {
   height: 100%;
   object-fit: contain;
 }
-button {
+.button {
   width: 160px;
   height: 30px;
   margin-left: 0px;
@@ -334,9 +347,34 @@ button {
   transition: transform 0.3s ease, margin 0.3s ease;
   color: white;
 }
-button:hover {
+.button:hover:not(:disabled) {
   transform: scale(1.2);
   margin-left: 10px;
   font-weight: bold;
+}
+button:disabled {
+  background-color: #999;
+  cursor: auto;
+}
+.alert {
+  padding: 20px;
+  background-color: #f44336;
+  color: white;
+  margin-bottom: 15px;
+}
+
+.closebtn {
+  margin-left: 15px;
+  color: white;
+  font-weight: bold;
+  float: right;
+  font-size: 22px;
+  line-height: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.closebtn:hover {
+  color: black;
 }
 </style>

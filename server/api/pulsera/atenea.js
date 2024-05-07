@@ -9,6 +9,7 @@ export default defineEventHandler(() => {
       "fotos": [
         { "src":"/productos-webp/pulseras/atenea.webp", "srcset": "/productos-webp/pulseras/atenea-cel.webp 500w, /productos-webp/pulseras/atenea.webp 1000w"}
       ],
-      "url": "/productos/pulseras/atenea"
+      "url": "/productos/pulseras/atenea",
+      "stock": 0
     };
   });

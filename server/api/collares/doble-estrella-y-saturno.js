@@ -10,6 +10,7 @@ export default defineEventHandler(() => {
         { "src":"/productos-webp/collares/doble-estrella-y-saturno/ima1.webp", "srcset": "/productos-webp/collares/doble-estrella-y-saturno/ima1-cel.webp 500w, /productos-webp/collares/doble-estrella-y-saturno/ima1.webp 1000w"},
         { "src":"/productos-webp/collares/doble-estrella-y-saturno/ima2.webp", "srcset": "/productos-webp/collares/doble-estrella-y-saturno/ima2-cel.webp 500w, /productos-webp/collares/doble-estrella-y-saturno/ima2.webp 1000w"}, 
       ],
-      "url": "/productos/collares/doble-estrella-y-saturno"
+      "url": "/productos/collares/doble-estrella-y-saturno",
+      "stock": 1
     };
   });

@@ -10,6 +10,7 @@ export default defineEventHandler(() => {
         { "src":"/productos-webp/collares/rosa/ima1.webp", "srcset": "/productos-webp/collares/rosa/ima1-cel.webp 500w, /productos-webp/collares/rosa/ima1.webp 1000w"},
         { "src":"/productos-webp/collares/rosa/ima2.webp", "srcset": "/productos-webp/collares/rosa/ima2-cel.webp 500w, /productos-webp/collares/rosa/ima2.webp 1000w"},
       ],
-      "url": "/productos/collares/rosa"
+      "url": "/productos/collares/rosa",
+      "stock": 1
     };
 });

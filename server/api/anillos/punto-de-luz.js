@@ -9,6 +9,7 @@ export default defineEventHandler(() => {
       "fotos": [
         { "src":"/productos-webp/anillos/punto-de-luz.webp", "srcset": "/productos-webp/anillos/punto-de-luz-cel.webp 500w, /productos-webp/anillos/punto-de-luz.webp 1000w"}
       ],
-      "url": "/productos/anillos/punto-de-luz"
+      "url": "/productos/anillos/punto-de-luz",
+      "stock": 0
     };
   });

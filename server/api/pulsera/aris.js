@@ -9,6 +9,7 @@ export default defineEventHandler(() => {
       "fotos": [
         { "src":"/productos-webp/pulseras/aris.webp", "srcset": "/productos-webp/pulseras/aris-cel.webp 500w, /productos-webp/pulseras/aris.webp 1000w"}
       ],
-      "url": "/productos/pulseras/aris"
+      "url": "/productos/pulseras/aris",
+      "stock": 0
     };
   });

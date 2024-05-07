@@ -9,6 +9,7 @@ export default defineEventHandler(() => {
       "fotos": [
         { "src":"/productos-webp/collares/sol-brillante.webp", "srcset": "/productos-webp/collares/sol-brillante-cel.webp 500w, /productos-webp/collares/sol-brillante.webp 1000w"}
       ],
-      "url": "/productos/collares/sol-brillante"
+      "url": "/productos/collares/sol-brillante",
+      "stock": 0
     };
 });

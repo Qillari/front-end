@@ -10,6 +10,7 @@ export default defineEventHandler(() => {
         { "src":"/productos-webp/anillos/gaviota/ima1.webp", "srcset": "/productos-webp/anillos/gaviota/ima1-cel.webp 500w, /productos-webp/anillos/gaviota/ima1.webp 1000w"},
         { "src":"/productos-webp/anillos/gaviota/ima2.webp", "srcset": "/productos-webp/anillos/gaviota/ima2-cel.webp 500w, /productos-webp/anillos/gaviota/ima2.webp 1000w"}
       ],
-      "url": "/productos/anillos/Gaviota"
+      "url": "/productos/anillos/Gaviota",
+      "stock": 1
     };
   });

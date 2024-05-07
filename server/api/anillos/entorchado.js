@@ -10,6 +10,7 @@ export default defineEventHandler(() => {
         { "src":"/productos-webp/anillos/entorchado/ima1.webp", "srcset": "/productos-webp/anillos/entorchado/ima1-cel.webp 500w, /productos-webp/anillos/entorchado/ima1.webp 1000w"},
         { "src":"/productos-webp/anillos/entorchado/ima2.webp", "srcset": "/productos-webp/anillos/entorchado/ima2-cel.webp 500w, /productos-webp/anillos/entorchado/ima2.webp 1000w"},
       ],
-      "url": "/productos/anillos/entorchado"
+      "url": "/productos/anillos/entorchado",
+      "stock": 0
     };
   });

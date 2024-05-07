@@ -9,6 +9,7 @@ export default defineEventHandler(() => {
       "fotos": [
         { "src":"/productos-webp/pulseras/perlas-sofia.webp", "srcset": "/productos-webp/pulseras/perlas-sofia-cel.webp 500w, /productos-webp/pulseras/perlas-sofia.webp 1000w"}
       ],
-      "url": "/productos/pulseras/perlas-sofia"
+      "url": "/productos/pulseras/perlas-sofia",
+      "stock": 0
     };
   });
