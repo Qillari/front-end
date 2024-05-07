@@ -55,7 +55,7 @@
   width: 100%;
   height: 3px;
   background-color: #00a10d;
-  animation: loading 3s linear forwards;
+  animation: loading 4s linear forwards;
   transform-origin: left;
 }
 .close {
@@ -188,7 +188,7 @@ export default {
           this.alert = true;
           setTimeout(() => {
             this.alert = false;
-          }, 5000);
+          }, 4000);
           this.correo = "";
 
         }

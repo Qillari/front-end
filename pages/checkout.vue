@@ -578,7 +578,7 @@ export default {
       this.$bus.$emit("precioeliminado", this.preciototal);
     },
     yape1() {
-      console.log(this.imagen_de_pago);
+      this.loading = true;
       axios
         .post("https://backend-phi-gules.vercel.app/yape", {
           preciototal: this.preciototal,
@@ -590,6 +590,8 @@ export default {
         })
         .then((response) => {
           console.log(response);
+          this.loading = false;
+          this.$router.push('/pago');
         });
     },
     async imagen_yape(event) {
@@ -636,6 +638,15 @@ export default {
     this.loadMercadoPago1()
   },
   setup() {
+    useHead({
+  title: "Qillari | Checkout",
+  link: [
+    {
+      rel: 'canonical',
+      href: 'https://qillari.com/checkout',
+    },
+  ],
+});
     onMounted(() => {
       document
         .getElementById("telefono")
