@@ -67,6 +67,7 @@
                 Pagar
               </button>
             </form>
+            <br />
           </div>
           <button class="button width1" @click="fun_yape()">
             <div class="flex">

@@ -27,7 +27,7 @@
             <div class="container">
               <div class="row">
                 <div class="col-4">
-                  <div class="flex">
+                  <div class="flex text1">
                     <h2>Vínculos inquebrantables, joyas eternas</h2>
                   </div>
                 </div>
@@ -39,9 +39,9 @@
           <div class="background3">
             <div class="container">
               <div class="row">
-                <div class="col-4">
-                  <div class="flex">
-                    <h2>Vínculos inquebrantables, joyas eternas</h2>
+                <div class="col-4" align="left">
+                  <div class="flex text1">
+                    <h2>Detalles que resaltan tu esencia</h2>
                     <button>Descubre tu estilo</button>
                   </div>
                 </div>
@@ -71,10 +71,13 @@
     transform: scale(1.2);
     font-weight: bold;
   }
+  .text1 {
+    display: none !important
+  }
 }
 @media screen and (min-width: 721px) and (max-width: 960px) {
-  .col-6 {
-    width: 75%;
+  .col-4 {
+    width: 33.3333%;
   }
   button:hover {
     transform: scale(1.2);
