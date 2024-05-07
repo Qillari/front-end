@@ -76,7 +76,6 @@
 <script setup>
 const route = useRoute();
 const data = await axios.get(`https://backend-phi-gules.vercel.app/api/productos/${route.params.id}`).then(response => response.data);
-console.log(data)
 useHead({
   title: data.titulo,
   meta: [
