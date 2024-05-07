@@ -405,7 +405,7 @@ export default {
                 .then((response) => {
                   console.log(response);
                   axios
-                    .post("https://qillari-back.vercel.app/correo", {
+                    .post("https://backend-phi-gules.vercel.app/correo", {
                       carrito: this.carrito,
                       email: this.email,
                       street_name: this.name_street1,
@@ -521,7 +521,7 @@ export default {
                 .then((response) => {
                   console.log(response);
                   axios
-                    .post("https://qillari-back.vercel.app/correo", {
+                    .post("https://backend-phi-gules.vercel.app/correo", {
                       carrito: this.carrito,
                       email: this.email,
                       street_name: this.name_street1,

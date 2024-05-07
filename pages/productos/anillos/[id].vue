@@ -75,7 +75,7 @@
 
 <script setup>
 const route = useRoute();
-const data = await axios.get(`https://backend-phi-gules.vercel.app/api/productos/${route.params.id}`).then(response => response.data);
+const data = await axios.get(`https://backend-phi-gules.vercel.app/api/anillos/${route.params.id}`).then(response => response.data);
 useHead({
   title: data.titulo,
   meta: [
@@ -189,7 +189,7 @@ export default {
     },
     async productos() {
       const route = useRoute();
-      const response = await axios.get(`https://backend-phi-gules.vercel.app/api/productos/${route.params.id}`);
+      const response = await axios.get(`https://backend-phi-gules.vercel.app/api/anillos/${route.params.id}`);
       this.producto.id = response.data.id;
       this.producto.nombre = response.data.nombre;
       this.producto.descripcion = response.data.descripcion;

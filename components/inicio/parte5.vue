@@ -178,7 +178,7 @@ export default {
       this.carga = true;
       try {
         let result = await axios.post(
-          "https://qillari-back.vercel.app/correo-newsletter",
+          "https://backend-phi-gules.vercel.app/correo-newsletter",
           {
             correo: this.correo,
           }
