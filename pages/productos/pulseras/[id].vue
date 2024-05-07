@@ -73,7 +73,7 @@
 const route = useRoute();
 const data = await axios.get(`https://backend-phi-gules.vercel.app/api/pulseras/${route.params.id}`).then(response => response.data);
 useHead({
-  title: data.value.titulo,
+  title: data.titulo,
   meta: [
     {
       name: "robots",
@@ -81,7 +81,7 @@ useHead({
     },
     {
       name: "description",
-      content: data.value.descripcion,
+      content: data.descripcion,
     },
     {
       property: "site_name",
@@ -89,19 +89,19 @@ useHead({
     },
     {
       property: "og:title",
-      content: data.value.titulo,
+      content: data.titulo,
     },
     {
       property: "og:description",
-      content: data.value.descripcion,
+      content: data.descripcion,
     },
     {
       property: "og:image",
-      content: data.value.fotos[0].src,
+      content: data.fotos[0].src,
     },
     {
       property: "og:url",
-      content: data.value.url,
+      content: data.url,
     },
     {
       name: "twitter:card",
@@ -109,15 +109,15 @@ useHead({
     },
     {
       name: "twitter:tittle",
-      content: data.value.titulo,
+      content: data.titulo,
     },
     {
       name: "twitter:description",
-      content: data.value.descripcion,
+      content: data.descripcion,
     },
     {
       name: "twitter:image",
-      content: data.value.url,
+      content: data.url,
     },
   ],
   link: [
