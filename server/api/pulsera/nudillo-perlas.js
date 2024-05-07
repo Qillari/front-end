@@ -3,7 +3,7 @@ export default defineEventHandler(() => {
       "id": "0000022",
       "titulo": "Pulsera Nudillos Perlas",
       "nombre": "Nudillos Perlas",
-      "descripcion": " texto descriptivo",
+      "descripcion": "Esta pulsera de plata 950 es una pieza elegante y sofisticada. Cada perla, delicadamente ensartada, está separada por sutiles detalles de plata que añaden un toque de estilo a la pulsera. La combinación de la plata reluciente y las perlas radiantes crea un contraste encantador, resultando en una pulsera contemporánea y elegante. Perfecta para cualquier ocasión, esta pulsera es un complemento ideal para tu estilo diario.",
       "precio-deescuento": 147.5,
       "precio": 118,
       "fotos": [

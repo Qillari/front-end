@@ -291,6 +291,7 @@ button {
 <script>
 import { loadMercadoPago } from "@mercadopago/sdk-js";
 import axios from "axios";
+let cardForm;
 
 export default {
   data() {
@@ -309,123 +310,243 @@ export default {
   },
   methods: {
     async loadMercadoPago1() {
+      let variable = localStorage.getItem('mercadopago1');
       await loadMercadoPago();
       const mp = new window.MercadoPago(
         "APP_USR-ec623ccc-56bb-4aac-92c0-5eb08f2aa0b7"
       );
-      const cardForm = mp.cardForm({
-        amount: this.preciototal + "",
-        iframe: true,
-        form: {
-          id: "form-checkout",
-          cardNumber: {
-            id: "form-checkout__cardNumber",
-            placeholder: "Numero de tarjeta",
+      if (!cardForm) {
+        cardForm = mp.cardForm({
+          amount: this.preciototal + "",
+          iframe: true,
+          form: {
+            id: "form-checkout",
+            cardNumber: {
+              id: "form-checkout__cardNumber",
+              placeholder: "Numero de tarjeta",
+            },
+            expirationDate: {
+              id: "form-checkout__expirationDate",
+              placeholder: "MM/YY",
+            },
+            securityCode: {
+              id: "form-checkout__securityCode",
+              placeholder: "Código de seguridad",
+            },
+            cardholderName: {
+              id: "form-checkout__cardholderName",
+              placeholder: "Titular de la tarjeta",
+            },
+            issuer: {
+              id: "form-checkout__issuer",
+              placeholder: "Banco emisor",
+            },
+            installments: {
+              id: "form-checkout__installments",
+              placeholder: "Cuotas",
+            },
+            identificationType: {
+              id: "form-checkout__identificationType",
+              placeholder: "Tipo de documento",
+            },
+            identificationNumber: {
+              id: "form-checkout__identificationNumber",
+              placeholder: "Número del documento",
+            },
+            cardholderEmail: {
+              id: "form-checkout__cardholderEmail",
+              placeholder: "E-mail",
+            },
           },
-          expirationDate: {
-            id: "form-checkout__expirationDate",
-            placeholder: "MM/YY",
-          },
-          securityCode: {
-            id: "form-checkout__securityCode",
-            placeholder: "Código de seguridad",
-          },
-          cardholderName: {
-            id: "form-checkout__cardholderName",
-            placeholder: "Titular de la tarjeta",
-          },
-          issuer: {
-            id: "form-checkout__issuer",
-            placeholder: "Banco emisor",
-          },
-          installments: {
-            id: "form-checkout__installments",
-            placeholder: "Cuotas",
-          },
-          identificationType: {
-            id: "form-checkout__identificationType",
-            placeholder: "Tipo de documento",
-          },
-          identificationNumber: {
-            id: "form-checkout__identificationNumber",
-            placeholder: "Número del documento",
-          },
-          cardholderEmail: {
-            id: "form-checkout__cardholderEmail",
-            placeholder: "E-mail",
-          },
-        },
-        callbacks: {
-          onFormMounted: (error) => {
-            if (error)
-              return console.warn(
-                "Form Mounted handling error: ",
-                error,
-              );
-            console.log("Form mounted");
-          },
-          onSubmit: async (event) => {
-            event.preventDefault();
-
-            const {
-              paymentMethodId: payment_method_id,
-              issuerId: issuer_id,
-              cardholderEmail: email,
-              amount,
-              token,
-              installments = 1,
-              identificationNumber,
-              identificationType,
-            } = cardForm.getCardFormData();
-
-            this.loading = true;
-            axios
-              .post("https://backend-phi-gules.vercel.app/checkout", {
-                token,
-                issuer_id,
-                payment_method_id,
-                transaction_amount: Number(amount),
-                installments: Number(installments),
-                description: this.carrito,
-                payer: {
-                  email,
-                  identification: {
-                    type: identificationType,
-                    number: identificationNumber,
+          callbacks: {
+            onFormMounted: (error) => {
+              if (error)
+                return console.warn(
+                  "Form Mounted handling error: ",
+                  error,
+                );
+              console.log("Form mounted");
+              localStorage.setItem("mercadopago1", true);
+            },
+            onSubmit: async (event) => {
+              event.preventDefault();
+                const {
+                  paymentMethodId: payment_method_id,
+                  issuerId: issuer_id,
+                  cardholderEmail: email,
+                  amount,
+                  token,
+                  installments = 1,
+                  identificationNumber,
+                  identificationType,
+                } = cardForm.getCardFormData();
+  
+              this.loading = true;
+              axios
+                .post("https://backend-phi-gules.vercel.app/checkout", {
+                  token,
+                  issuer_id,
+                  payment_method_id,
+                  transaction_amount: Number(amount),
+                  installments: Number(installments),
+                  description: this.carrito,
+                  payer: {
+                    email,
+                    identification: {
+                      type: identificationType,
+                      number: identificationNumber,
+                    },
+                    adress: {
+                      street_name: this.name_street1,
+                    },
                   },
-                  adress: {
-                    street_name: this.name_street1,
-                  },
-                },
-              })
-              .then((response) => {
-                console.log(response);
-                axios
-                  .post("https://qillari-back.vercel.app/correo", {
-                    carrito: this.carrito,
-                    email: this.email,
-                    street_name: this.name_street1,
-                    preciototal: this.preciototal,
-                  })
-                  .then((response) => {
-                    console.log(response);
-                    localStorage.removeItem("carrito");
-                    localStorage.removeItem("precioTotal");
-                    this.carrito = [];
-                    this.preciototal = 0;
-                    this.$bus.$emit("productoEliminado", this.carrito);
-                    this.$bus.$emit("precioeliminado", this.preciototal);
-                    this.$router.push("/pago");
-                    this.loading = false;
-                  });
-              })
-              .catch((error) => {
-                console.log(error);
-                this.loading = false;
-              });
+                })
+                .then((response) => {
+                  console.log(response);
+                  axios
+                    .post("https://qillari-back.vercel.app/correo", {
+                      carrito: this.carrito,
+                      email: this.email,
+                      street_name: this.name_street1,
+                      preciototal: this.preciototal,
+                    })
+                    .then((response) => {
+                      console.log(response);
+                      localStorage.removeItem("carrito");
+                      localStorage.removeItem("precioTotal");
+                      this.carrito = [];
+                      this.preciototal = 0;
+                      this.$bus.$emit("productoEliminado", this.carrito);
+                      this.$bus.$emit("precioeliminado", this.preciototal);
+                      this.$router.push("/pago");
+                      this.loading = false;
+                    });
+                })
+                .catch((error) => {
+                  console.log(error);
+                  this.loading = false;
+                });
+            },
           },
-        },
-      });
+        });
+      }
+      else {
+        cardForm.unmount()
+        cardForm = mp.cardForm({
+          amount: this.preciototal + "",
+          iframe: true,
+          form: {
+            id: "form-checkout",
+            cardNumber: {
+              id: "form-checkout__cardNumber",
+              placeholder: "Numero de tarjeta",
+            },
+            expirationDate: {
+              id: "form-checkout__expirationDate",
+              placeholder: "MM/YY",
+            },
+            securityCode: {
+              id: "form-checkout__securityCode",
+              placeholder: "Código de seguridad",
+            },
+            cardholderName: {
+              id: "form-checkout__cardholderName",
+              placeholder: "Titular de la tarjeta",
+            },
+            issuer: {
+              id: "form-checkout__issuer",
+              placeholder: "Banco emisor",
+            },
+            installments: {
+              id: "form-checkout__installments",
+              placeholder: "Cuotas",
+            },
+            identificationType: {
+              id: "form-checkout__identificationType",
+              placeholder: "Tipo de documento",
+            },
+            identificationNumber: {
+              id: "form-checkout__identificationNumber",
+              placeholder: "Número del documento",
+            },
+            cardholderEmail: {
+              id: "form-checkout__cardholderEmail",
+              placeholder: "E-mail",
+            },
+          },
+          callbacks: {
+            onFormMounted: (error) => {
+              if (error)
+                return console.warn(
+                  "Form Mounted handling error: ",
+                  error,
+                );
+              console.log("Form mounted");
+              localStorage.setItem("mercadopago1", true);
+            },
+            onSubmit: async (event) => {
+              event.preventDefault();
+                const {
+                  paymentMethodId: payment_method_id,
+                  issuerId: issuer_id,
+                  cardholderEmail: email,
+                  amount,
+                  token,
+                  installments = 1,
+                  identificationNumber,
+                  identificationType,
+                } = cardForm.getCardFormData();
+  
+              this.loading = true;
+              axios
+                .post("https://backend-phi-gules.vercel.app/checkout", {
+                  token,
+                  issuer_id,
+                  payment_method_id,
+                  transaction_amount: Number(amount),
+                  installments: Number(installments),
+                  description: this.carrito,
+                  payer: {
+                    email,
+                    identification: {
+                      type: identificationType,
+                      number: identificationNumber,
+                    },
+                    adress: {
+                      street_name: this.name_street1,
+                    },
+                  },
+                })
+                .then((response) => {
+                  console.log(response);
+                  axios
+                    .post("https://qillari-back.vercel.app/correo", {
+                      carrito: this.carrito,
+                      email: this.email,
+                      street_name: this.name_street1,
+                      preciototal: this.preciototal,
+                    })
+                    .then((response) => {
+                      console.log(response);
+                      localStorage.removeItem("carrito");
+                      localStorage.removeItem("precioTotal");
+                      this.carrito = [];
+                      this.preciototal = 0;
+                      this.$bus.$emit("productoEliminado", this.carrito);
+                      this.$bus.$emit("precioeliminado", this.preciototal);
+                      this.$router.push("/pago");
+                      this.loading = false;
+                    });
+                })
+                .catch((error) => {
+                  console.log(error);
+                  this.loading = false;
+                });
+            },
+          },
+        });
+      }
+      
     },
     fun_form() {
       if (this.form == true) {
@@ -496,7 +617,6 @@ export default {
       deep: true,
     },
   },
-  beforeMount() {},
   mounted() {
     this.carrito = JSON.parse(localStorage.getItem("carrito") || "[]");
     this.preciototal = JSON.parse(localStorage.getItem("precioTotal") || 0);
@@ -512,6 +632,7 @@ export default {
     this.$bus.$on("precioTotal", (preciototal) => {
       this.preciototal = preciototal;
     });
+    this.loadMercadoPago1()
   },
   setup() {
     onMounted(() => {

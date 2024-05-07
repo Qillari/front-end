@@ -7,7 +7,7 @@ export default defineEventHandler(() => {
       "precio-deescuento": 117.6,
       "precio": 98,
       "fotos": [
-        {"src":"/productos/aretes/perlas.jpg", "srcset": ""}
+        {"src":"productos-webp/aretes/perlas.webp", "srcset": "/productos-webp/aretes/perlas-cel.webp 500w, /productos-webp/aretes/perlas.webp 1000w"}
       ],
       "url": "/productos/aretes/perlas"
     };

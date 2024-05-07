@@ -2,23 +2,54 @@
   <div>
     <div>
       <swiper-container
-          slides-per-view="1"
-          speed="500"
-          loop="true"
-          autoplay-delay="2500"
-          autoplay-disable-on-interaction="false"
-        >
-          <swiper-slide
-            v-for="n in fondos"
-          >
-          <div :style="{ 'background-color': n }" style="width: 100%; height: 100%"></div>
+        slides-per-view="1"
+        speed="500"
+        loop="true"
+        autoplay-delay="2500"
+        autoplay-disable-on-interaction="false"
+      >
+        <swiper-slide>
+          <div class="background1">
+            <div class="container">
+              <div class="flex">
+                <h1>Brilla con elegancia</h1>
+                <button>Explora la colección</button>
+              </div>
+            </div>
+          </div>
         </swiper-slide>
-        </swiper-container>
+        <swiper-slide>
+          <div class="background2">
+            <div class="container">
+              <div class="flex">
+                <h2>Vínculos inquebrantables, joyas eternas</h2>
+              </div>
+            </div>
+          </div>
+        </swiper-slide>
+        <swiper-slide>
+          <div class="background3">
+            <div class="container">
+              <div class="flex">
+                <h2>
+                  Vínculos inquebrantables, joyas eternas
+                </h2>
+                <button>Descubre tu estilo</button>
+              </div>
+            </div>
+          </div>
+        </swiper-slide>
+      </swiper-container>
     </div>
   </div>
 </template>
 
 <style scoped>
+@font-face {
+  font-family: "Brittany";
+  src: url("/BrittanySignature.ttf") format("truetype");
+  /* Agrega otros formatos si los tienes */
+}
 @media screen and (max-width: 720px) {
   .col-6 {
     text-align: center;
@@ -52,7 +83,7 @@
   }
 }
 swiper-container {
-  height: 100vh;
+  height: 80vh;
   width: 100%;
   position: relative;
   z-index: 1;
@@ -67,7 +98,7 @@ button {
   background-color: rgba(255, 255, 255, 0.897);
   border-color: transparent;
   cursor: pointer;
-  transition: transform 0.3s ease, margin 0.3s;
+  transition: transform 0.3s ease, margin 0.3s ease, font-weight 0.3s ease;
 }
 button:hover {
   transform: scale(1.2);
@@ -104,9 +135,38 @@ button:hover {
   height: 100%;
 }
 p,
-h1 {
+h1,
+h2 {
   color: white;
-  font-family: "Segoe UI";
+  font-family: "Brittany";
+  font-size: 40px;
+}
+.background1 {
+  height: 100%;
+  object-fit: contain;
+  background-size: 100% auto;
+  object-position: 100% 10%;
+  background-image: url("/inicio/parte1/ima2-webp-compu.webp");
+}
+.background2 {
+  height: 100%;
+  object-fit: contain;
+  background-size: 100% auto;
+  object-position: 100% 10%;
+  background-image: url("/inicio/parte1/ima3-webp-compu.webp");
+}
+.background3 {
+  height: 100%;
+  object-fit: contain;
+  background-size: 100% auto;
+  object-position: 100% 10%;
+  background-image: url("/inicio/parte1/ima4-webp-compu.webp");
+}
+.flex {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
 }
 </style>
 
@@ -115,6 +175,11 @@ export default {
   data() {
     return {
       fondos: ["red", "blue", "grey"],
+      fotos: [
+        "/inicio/parte1/ima2-webp-compu.webp",
+        "/inicio/parte1/ima3-webp-compu.webp",
+        "/inicio/parte1/ima4-webp-compu.webp",
+      ],
     };
   },
 };

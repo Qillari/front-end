@@ -6,3 +6,10 @@
     <Footer style="z-index: 10; position: relative; margin-top: auto" />
   </div>
 </template>
+<script>
+export default {
+  unmounted() {
+    localStorage.removeItem('mercadopago1');
+  }
+}
+</script>

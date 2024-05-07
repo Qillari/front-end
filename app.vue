@@ -21,11 +21,19 @@ body {
   filter: blur(1rem);
 }
 </style>
-<script setup lang="ts">
-useSchemaOrg([
-  defineWebSite({
-    name: 'Qillari',
-  }),
-  defineWebPage(),
-])
+<script>
+export default {
+  mounted() {
+    window.addEventListener('beforeunload', this.eliminarVariable);
+  },
+  beforeUnmount() {
+    window.removeEventListener('beforeunload', this.eliminarVariable);
+  },
+  methods: {
+    eliminarVariable() {
+      localStorage.removeItem('mercadopago1');
+    }
+  }
+}
+
 </script>

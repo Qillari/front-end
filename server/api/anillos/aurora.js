@@ -7,7 +7,7 @@ export default defineEventHandler(() => {
       "precio-deescuento": 66,
       "precio": 55,
       "fotos": [
-        {"src": "/productos/anillos/Aurora.jpg", "srcset": ""}
+        {"src": "/productos-webp/anillos/aurora.webp", "srcset": "/productos-webp/anillos/aurora.webp 500w, /productos-webp/anillos/aurora.webp 1000w"}
       ],
       "url": "/productos/anillos/aurora"
     };
