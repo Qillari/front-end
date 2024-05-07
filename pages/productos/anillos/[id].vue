@@ -75,9 +75,10 @@
 
 <script setup>
 const route = useRoute();
-const { data } = await useFetch(`/api/anillos/${route.params.id}`);
+const data = await axios.get(`https://front-end-qillari.vercel.app/productos/${route.params.id}`).then(response => response.data);
+console.log(data)
 useHead({
-  title: data.value.titulo,
+  title: data.titulo,
   meta: [
     {
       name: "robots",
@@ -85,7 +86,7 @@ useHead({
     },
     {
       name: "description",
-      content: data.value.descripcion,
+      content: data.descripcion,
     },
     {
       property: "site_name",
@@ -93,19 +94,19 @@ useHead({
     },
     {
       property: "og:title",
-      content: data.value.titulo,
+      content: data.titulo,
     },
     {
       property: "og:description",
-      content: data.value.descripcion,
+      content: data.descripcion,
     },
     {
       property: "og:image",
-      content: data.value.fotos[0],
+      content: data.fotos,
     },
     {
       property: "og:url",
-      content: data.value.url,
+      content: data.url,
     },
     {
       name: "twitter:card",
@@ -113,21 +114,21 @@ useHead({
     },
     {
       name: "twitter:tittle",
-      content: data.value.titulo,
+      content: data.titulo,
     },
     {
       name: "twitter:description",
-      content: data.value.descripcion,
+      content: data.descripcion,
     },
     {
       name: "twitter:image",
-      content: data.value.url,
+      content: data.url,
     },
   ],
   link: [
     {
       rel: "canonical",
-      href: "https://qillari.com" + data.value.url,
+      href: "https://qillari.com" + data.url,
     },
   ],
 });
@@ -147,6 +148,7 @@ export default {
         amount: 1,
         stock: "",
         selectedImage: "",
+        stock: null,
       },
       carrito: [],
       preciototal: 0,
@@ -188,7 +190,7 @@ export default {
     },
     async productos() {
       const route = useRoute();
-      const response = await axios.get(`/api/anillos/${route.params.id}`);
+      const response = await axios.get(`https://front-end-qillari.vercel.app/productos/${route.params.id}`);
       this.producto.id = response.data.id;
       this.producto.nombre = response.data.nombre;
       this.producto.descripcion = response.data.descripcion;
