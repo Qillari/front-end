@@ -488,7 +488,7 @@ export default {
           nombre: "Pulsera Arbol De La Vida Regulable",
           ima: "/productos-webp/pulseras/regulable-arbol-de-la-vida/ima1.webp",
           srcset:
-            "/productos-webp/pulseras/regulable-arbol-de-la-vida-cel/ima1.webp 500w, /productos-webp/pulseras/regulable-arbol-de-la-vida/ima1.webp 1000w",
+            "/productos-webp/pulseras/regulable-arbol-de-la-vida/ima1-cel.webp 500w, /productos-webp/pulseras/regulable-arbol-de-la-vida/ima1.webp 1000w",
           link: "/productos/pulseras/arbol-de-la-vida-regulable",
           precio: 110,
           precio_descuento: 137.5
