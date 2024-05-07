@@ -123,7 +123,7 @@ useHead({
   link: [
     {
       rel: "canonical",
-      href: "https://qillari.com" + data.value.url,
+      href: "https://qillari.com" + data.url,
     },
   ],
 });
