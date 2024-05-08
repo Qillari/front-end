@@ -97,14 +97,12 @@
   justify-content: center;
   display: flex;
   align-items: center;
-  font-family: "Segoe UI";
 }
 .nav-link {
   font-size: 20px;
   opacity: 0.7;
   color: white;
   text-decoration: none;
-  font-family: "Segoe UI";
   transition: opacity 0.3s;
 }
 .nav-link.router-link-exact-active {

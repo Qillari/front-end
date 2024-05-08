@@ -53,6 +53,42 @@
                 v-model="email"
               />
               <br />
+              <div class="input-select">
+                <p style="margin-right: 10px">Departamento</p>
+                <select v-model="selectedProduct" @change="updatePrice">
+                  <option value="7.9">Lima Metropolitana</option>
+                  <option value="10.9">Huaral</option>
+                  <option value="10.9">Cañete</option>
+                  <option value="10.9">Chincha</option>
+                  <option value="10.9">Canta</option>
+                  <option value="12.9">Cusco</option>
+                  <option value="12.9">La Libertad</option>
+                  <option value="12.9">Ayacucho</option>
+                  <option value="12.9">Áncash</option>
+                  <option value="12.9">Junín</option>
+                  <option value="12.9">Huacho</option>
+                  <option value="12.9">Huánuco</option>
+                  <option value="12.9">Ica</option>
+                  <option value="12.9">Piura</option>
+                  <option value="12.9">Arequipa</option>
+                  <option value="12.9">Lambayeque</option>
+                  <option value="14.9">Pasco</option>
+                  <option value="14.9">Cajamarca</option>
+                  <option value="14.9">Huancavelica</option>
+                  <option value="14.9">Barranca</option>
+                  <option value="16.9">Tumbes</option>
+                  <option value="16.9">Juliaca</option>
+                  <option value="16.9">Moquegua</option>
+                  <option value="16.9">Ucayali</option>
+                  <option value="16.9">Tacna</option>
+                  <option value="16.9">San Martín</option>
+                  <option value="17.9">Apurimac</option>
+                  <option value="17.9">Madre de Dios</option>
+                  <option value="18.9">Loreto</option>
+                  <option value="18.9">Amazonas</option>
+                </select>
+              </div>
+              <br />
               <input
                 type="text"
                 placeholder="Dirección"
@@ -82,7 +118,7 @@
             class="width1"
           />
           <div v-show="yape" class="width1">
-            <p>1. Agrega tu correo electronico</p>
+            <p>1. Agrega tus datos</p>
             <p>2. Agrega la imagen del pago realizado a través de Yape.</p>
             <p>
               3. Después, presiona el botón Enviar. Recibirás un correo
@@ -111,7 +147,48 @@
             />
             <br />
             <br />
-            <input type="text" placeholder="Dirección" v-model="direccion" class="input" />
+            <div class="input-select">
+              <p style="margin-right: 10px">Departamento</p>
+              <select v-model="selectedProduct" @change="updatePrice">
+                <option value="7.9">Lima Metropolitana</option>
+                <option value="10.9">Huaral</option>
+                <option value="10.9">Cañete</option>
+                <option value="10.9">Chincha</option>
+                <option value="10.9">Canta</option>
+                <option value="12.9">Cusco</option>
+                <option value="12.9">La Libertad</option>
+                <option value="12.9">Ayacucho</option>
+                <option value="12.9">Áncash</option>
+                <option value="12.9">Junín</option>
+                <option value="12.9">Huacho</option>
+                <option value="12.9">Huánuco</option>
+                <option value="12.9">Ica</option>
+                <option value="12.9">Piura</option>
+                <option value="12.9">Arequipa</option>
+                <option value="12.9">Lambayeque</option>
+                <option value="14.9">Pasco</option>
+                <option value="14.9">Cajamarca</option>
+                <option value="14.9">Huancavelica</option>
+                <option value="14.9">Barranca</option>
+                <option value="16.9">Tumbes</option>
+                <option value="16.9">Juliaca</option>
+                <option value="16.9">Moquegua</option>
+                <option value="16.9">Ucayali</option>
+                <option value="16.9">Tacna</option>
+                <option value="16.9">San Martín</option>
+                <option value="17.9">Apurimac</option>
+                <option value="17.9">Madre de Dios</option>
+                <option value="18.9">Loreto</option>
+                <option value="18.9">Amazonas</option>
+              </select>
+            </div>
+            <br />
+            <input
+              type="text"
+              placeholder="Dirección"
+              v-model="direccion"
+              class="input"
+            />
             <br />
             <br />
             <input
@@ -137,16 +214,10 @@
               <div align="center">
                 <br />
                 <h2>Productos</h2>
-                <p>
-                  Precio: {{ preciototal }}
-                </p>
-                <p>
-                  Envió: {{ precio_envio }}
-                </p>
+                <p>Precio: {{ preciototal }}</p>
+                <p>Envió: {{ precio_envio }}</p>
                 <hr />
-                <p>
-                  Total: {{ preciototal + precio_envio }}
-                </p>
+                <p>Total: {{ preciototal + precio_envio }}</p>
               </div>
               <hr
                 align="left"
@@ -204,43 +275,49 @@
   .col-6 {
     width: 100%;
   }
+
   .width1 {
     width: 100%;
   }
 }
+
 @media screen and (min-width: 601px) {
   .col-6 {
     width: 50%;
   }
+
   .width1 {
     width: 90%;
   }
 }
+
 h1,
 h2,
 h5,
 p,
 button {
-  font-family: "Segoe UI";
   margin: 0;
 }
+
 .card {
   background-color: #fff;
   border-radius: 4px;
   box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.3);
 }
+
 .input {
   width: 100%;
   height: 25px;
   border: 1px solid rgba(0, 0, 0, 0.8);
   border-radius: 3px;
 }
+
 .button {
   border: transparent;
   background: rgb(255, 255, 255);
   cursor: pointer;
-  font-family: "Segoe UI";
 }
+
 .button_check {
   height: 30px;
   margin-left: 0px;
@@ -252,10 +329,12 @@ button {
   color: white;
   width: 100%;
 }
+
 .button_check:hover {
   transform: scale(1.01);
   font-weight: bold;
 }
+
 .but {
   border: transparent;
   background-color: transparent;
@@ -263,18 +342,22 @@ button {
   color: rgb(109, 109, 109);
   transition: color 0.3s ease;
 }
+
 .but:hover {
   color: rgb(0, 0, 0);
 }
+
 .flex {
   display: flex;
   justify-content: space-between;
 }
+
 #form-checkout {
   display: flex;
   flex-direction: column;
   width: 100%;
 }
+
 .container {
   padding-right: 15px;
   padding-left: 15px;
@@ -282,6 +365,7 @@ button {
   margin-left: auto;
   height: 100%;
 }
+
 .row {
   display: flex;
   flex-wrap: wrap;
@@ -289,10 +373,15 @@ button {
   margin-right: 0;
   height: 100%;
 }
+
 .background {
   background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)),
     url("/public/inicio/parte1/ima1.webp");
   height: 150px;
+}
+
+.input-select {
+  display: flex;
 }
 </style>
 
@@ -314,12 +403,13 @@ export default {
       yape: false,
       loading: false,
       imagen_de_pago: null,
-      precio_envio: 7.9
+      precio_envio: 0,
+      selectedProduct: null,
     };
   },
   methods: {
     async loadMercadoPago1() {
-      let variable = localStorage.getItem('mercadopago1');
+      let variable = localStorage.getItem("mercadopago1");
       await loadMercadoPago();
       const mp = new window.MercadoPago(
         "APP_USR-ec623ccc-56bb-4aac-92c0-5eb08f2aa0b7"
@@ -370,26 +460,23 @@ export default {
           callbacks: {
             onFormMounted: (error) => {
               if (error)
-                return console.warn(
-                  "Form Mounted handling error: ",
-                  error,
-                );
+                return console.warn("Form Mounted handling error: ", error);
               console.log("Form mounted");
               localStorage.setItem("mercadopago1", true);
             },
             onSubmit: async (event) => {
               event.preventDefault();
-                const {
-                  paymentMethodId: payment_method_id,
-                  issuerId: issuer_id,
-                  cardholderEmail: email,
-                  amount,
-                  token,
-                  installments = 1,
-                  identificationNumber,
-                  identificationType,
-                } = cardForm.getCardFormData();
-  
+              const {
+                paymentMethodId: payment_method_id,
+                issuerId: issuer_id,
+                cardholderEmail: email,
+                amount,
+                token,
+                installments = 1,
+                identificationNumber,
+                identificationType,
+              } = cardForm.getCardFormData();
+
               this.loading = true;
               axios
                 .post("https://backend-phi-gules.vercel.app/checkout", {
@@ -438,9 +525,8 @@ export default {
             },
           },
         });
-      }
-      else {
-        cardForm.unmount()
+      } else {
+        cardForm.unmount();
         cardForm = mp.cardForm({
           amount: this.preciototal + "",
           iframe: true,
@@ -486,26 +572,23 @@ export default {
           callbacks: {
             onFormMounted: (error) => {
               if (error)
-                return console.warn(
-                  "Form Mounted handling error: ",
-                  error,
-                );
+                return console.warn("Form Mounted handling error: ", error);
               console.log("Form mounted");
               localStorage.setItem("mercadopago1", true);
             },
             onSubmit: async (event) => {
               event.preventDefault();
-                const {
-                  paymentMethodId: payment_method_id,
-                  issuerId: issuer_id,
-                  cardholderEmail: email,
-                  amount,
-                  token,
-                  installments = 1,
-                  identificationNumber,
-                  identificationType,
-                } = cardForm.getCardFormData();
-  
+              const {
+                paymentMethodId: payment_method_id,
+                issuerId: issuer_id,
+                cardholderEmail: email,
+                amount,
+                token,
+                installments = 1,
+                identificationNumber,
+                identificationType,
+              } = cardForm.getCardFormData();
+
               this.loading = true;
               axios
                 .post("https://backend-phi-gules.vercel.app/checkout", {
@@ -555,7 +638,6 @@ export default {
           },
         });
       }
-      
     },
     fun_form() {
       if (this.form == true) {
@@ -599,7 +681,7 @@ export default {
         .then((response) => {
           console.log(response);
           this.loading = false;
-          this.$router.push('/pago');
+          this.$router.push("/pago");
         });
     },
     async imagen_yape(event) {
@@ -612,6 +694,9 @@ export default {
         reader.readAsDataURL(file);
       });
       this.imagen_de_pago = reader.result;
+    },
+    updatePrice() {
+      this.precio_envio = parseFloat(this.selectedProduct);
     },
   },
   watch: {
@@ -643,18 +728,18 @@ export default {
     this.$bus.$on("precioTotal", (preciototal) => {
       this.preciototal = preciototal;
     });
-    this.loadMercadoPago1()
+    this.loadMercadoPago1();
   },
   setup() {
     useHead({
-  title: "Qillari | Checkout",
-  link: [
-    {
-      rel: 'canonical',
-      href: 'https://qillari.com/checkout',
-    },
-  ],
-});
+      title: "Qillari | Checkout",
+      link: [
+        {
+          rel: "canonical",
+          href: "https://qillari.com/checkout",
+        },
+      ],
+    });
     onMounted(() => {
       document
         .getElementById("telefono")

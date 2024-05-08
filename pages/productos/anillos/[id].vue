@@ -284,13 +284,6 @@ export default {
     padding-right: 10px;
   }
 }
-p,
-h1,
-h2,
-h3,
-div {
-  font-family: "Segoe UI";
-}
 .background {
   background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)),
     url("/public/inicio/parte1/ima1.webp");

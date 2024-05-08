@@ -40,26 +40,25 @@
               /> </picture
           ></a>
         </div>
-        
         <div>
-            <a href="https://www.facebook.com/Qillari">
-              <picture>
-                <source
-                  srcset="/tiktok.webp"
-                  class="imagen"
-                  media="(min-width: 500px)"
-                  alt="logo de facebook"
-                  loading="lazy"
-                />
-                <img
-                  src="/tiktok.webp"
-                  class="imagen1"
-                  alt="logo de facebook"
-                  loading="lazy"
-                />
-              </picture>
-            </a>
-          </div>
+          <a href="https://www.tiktok.com/@qillarijewelry?_t=8mBdFuJLj2D&_r=1">
+            <picture>
+              <source
+                srcset="/tiktok.webp"
+                class="imagen"
+                media="(min-width: 500px)"
+                alt="logo de facebook"
+                loading="lazy"
+              />
+              <img
+                src="/tiktok.webp"
+                class="imagen1"
+                alt="logo de facebook"
+                loading="lazy"
+              />
+            </picture>
+          </a>
+        </div>
       </div>
     </div>
   </div>

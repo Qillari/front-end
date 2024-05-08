@@ -145,13 +145,6 @@ button:hover:not(:disabled) {
     justify-content: space-between;
   }
 }
-
-input,
-button,
-h2,
-p {
-  font-family: "Segoe UI";
-}
 </style>
 
 <script>

@@ -99,7 +99,6 @@
 p,
 h2 {
   color: white;
-  font-family: "Segoe UI";
 }
 button {
   width: 160px;

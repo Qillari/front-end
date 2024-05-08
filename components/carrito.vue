@@ -137,12 +137,6 @@ h5 {
   margin: 0;
   padding: 0;
 }
-h1,
-h2,
-h5,
-p {
-  font-family: "Segoe UI";
-}
 .container {
   padding-right: 15px;
   padding-left: 15px;

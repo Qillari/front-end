@@ -55,7 +55,6 @@ h2 {
   color: white;
   position: absolute;
   bottom: 0;
-  font-family: "Segoe UI";
 }
 .card {
   border-radius: 4px;

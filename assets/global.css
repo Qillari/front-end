@@ -1,0 +1,13 @@
+@font-face {
+    font-family: "Brittany";
+    src: url("/BrittanySignature.ttf") format("truetype");
+    /* Agrega otros formatos si los tienes */
+  }
+@font-face {
+    font-family: "karma";
+    src: url("/Karma-Regular.ttf") format("truetype");
+    /* Agrega otros formatos si los tienes */
+}
+html {
+    font-family: "karma";
+}

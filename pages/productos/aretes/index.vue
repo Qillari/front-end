@@ -270,7 +270,6 @@
   width: 100%;
   background-color: black;
   color: white;
-  font-family: "Segoe UI";
   border-radius: 5px;
   border-color: transparent;
   padding: 3px;
@@ -333,7 +332,6 @@ input[type="range"]::-webkit-slider-thumb:hover {
   color: rgb(0, 0, 0);
   text-decoration: none;
   transition: opacity 0.3s;
-  font-family: "Segoe UI";
 }
 .link.router-link-exact-active {
   opacity: 1;
@@ -363,17 +361,6 @@ h1 {
 }
 h2 {
   margin: 0;
-}
-h1,
-h2,
-h3,
-input,
-p,
-ul,
-li,
-label,
-span {
-  font-family: "Segoe UI";
 }
 .card {
   background-color: #fff;

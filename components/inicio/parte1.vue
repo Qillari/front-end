@@ -40,7 +40,7 @@
           <div class="background3">
             <div class="container">
               <div class="row">
-                <div class="col-4" align="left">
+                <div class="col-3" align="left">
                   <div class="text1">
                     <h2>Detalles que resaltan tu esencia</h2>
                     <button>Descubre tu estilo</button>
@@ -56,11 +56,6 @@
 </template>
 
 <style scoped>
-@font-face {
-  font-family: "Brittany";
-  src: url("/BrittanySignature.ttf") format("truetype");
-  /* Agrega otros formatos si los tienes */
-}
 @media screen and (max-width: 720px) {
   .col-6 {
     text-align: center;
@@ -83,6 +78,9 @@
   .col-4 {
     width: 33.3333%;
   }
+  .col-3 {
+    width: 25%;
+  }
   button:hover {
     transform: scale(1.2);
     margin-left: 10px;
@@ -98,6 +96,9 @@
 @media screen and (min-width: 961px) {
   .col-4 {
     width: 33.3333%;
+  }
+  .col-3 {
+    width: 25%;
   }
   button:hover {
     transform: scale(1.2);

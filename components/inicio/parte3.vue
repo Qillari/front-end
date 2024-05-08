@@ -89,12 +89,8 @@
   height: 100%;
 }
 h2 {
-  font-family: "Segoe UI";
   font-size: 35px;
   margin: 0;
-}
-h3,p {
-  font-family: "Segoe UI";
 }
 .card {
   background-color: #fff;
