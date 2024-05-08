@@ -50,12 +50,12 @@
           <br />
           <br />
           <button @click="ordenarPorPrecioMax" class="button-precio">
-            valor maximo
+            ver de mayor a menor precio
           </button>
           <br />
           <br />
           <button @click="ordenarPorPrecioMin" class="button-precio">
-            valor Minimo
+            ver de menor a mayor precio
           </button>
           <br />
           <br />
@@ -102,12 +102,12 @@
             </div>
             <br />
             <button @click="ordenarPorPrecioMax" class="button-precio">
-              valor maximo
+              ver de mayor a menor precio
             </button>
             <br />
             <br />
             <button @click="ordenarPorPrecioMin" class="button-precio">
-              valor Minimo
+              ver de menor a mayor precio
             </button>
             <br />
             <br />
@@ -491,7 +491,7 @@ export default {
             "/productos-webp/aretes/argollas-tamaño-l/ima1-cel-opcion2.webp 500w, /productos-webp/aretes/argollas-tamaño-l/ima1-opcion2.webp 1000w",
           link: "/productos/aretes/argollas-tamano-l",
           precio: 94,
-          precio_descuento: 112.8,
+          precio_descuento: 112.9,
         },
         {
           id: "000008",
@@ -501,7 +501,7 @@ export default {
             "/productos-webp/aretes/isabelle-cel.webp 500w, /productos-webp/aretes/isabelle.webp 1000w",
           link: "/productos/aretes/isabelle",
           precio: 88,
-          precio_descuento: 105.6,
+          precio_descuento: 105.9,
         },
         {
           id: "000009",
@@ -511,7 +511,7 @@ export default {
             "/productos-webp/aretes/perlas.webp 500w, /productos-webp/aretes/perlas.webp 1000w",
           link: "/productos/aretes/perlas",
           precio: 98,
-          precio_descuento: 117.6,
+          precio_descuento: 117.9,
         },
         {
           id: "000010",
@@ -521,7 +521,7 @@ export default {
             "/productos-webp/aretes/punto-de-luz-cel.webp 500w, /productos-webp/aretes/punto-de-luz.webp 1000w",
           link: "/productos/aretes/punto-de-luz",
           precio: 78,
-          precio_descuento: 93.6,
+          precio_descuento: 93.9,
         },
         {
           id: "0000012",
@@ -541,7 +541,7 @@ export default {
             "/productos-webp/collares/doble-estrella-y-saturno/ima1-cel.webp 500w, /productos-webp/collares/doble-estrella-y-saturno/ima1.webp 1000w",
           link: "/productos/collares/doble-estrella-y-saturno",
           precio: 125,
-          precio_descuento: 156.3
+          precio_descuento: 156.9
         },
         {
           id: "0000014",
@@ -561,7 +561,7 @@ export default {
             "/productos-webp/collares/letra-cel/ima1.webp 500w, /productos-webp/collares/letra/ima1.webp 1000w",
           link: "/productos/collares/letra",
           precio: 105,
-          precio_descuento: 131.3
+          precio_descuento: 131.9
         },
         {
           id: "0000017",
@@ -571,7 +571,7 @@ export default {
             "/productos-webp/collares/rosa/ima1-cel.webp 500w, /productos-webp/collares/rosa/ima1.webp 1000w",
           link: "/productos/collares/rosa",
           precio: 101,
-          precio_descuento: 126.3
+          precio_descuento: 126.9
         },
         {
           id: "0000018",
@@ -581,7 +581,7 @@ export default {
             "/productos-webp/collares/sol-brillante-cel.webp 500w, /productos-webp/collares/sol-brillante.webp 1000w",
           link: "/productos/collares/sol-brillante",
           precio: 115,
-          precio_descuento: 143.8
+          precio_descuento: 143.9
         },
         {
           id: "0000024",
@@ -591,7 +591,7 @@ export default {
             "/productos-webp/pulseras/regulable-arbol-de-la-vida/ima1-cel.webp 500w, /productos-webp/pulseras/regulable-arbol-de-la-vida/ima1.webp 1000w",
           link: "/productos/pulseras/arbol-de-la-vida-regulable",
           precio: 110,
-          precio_descuento: 137.5
+          precio_descuento: 137.9
         },
         {
           id: "0000020",
@@ -601,7 +601,7 @@ export default {
             "/productos-webp/pulseras/aris-cel.webp 500w, /productos-webp/pulseras/aris.webp 1000w",
           link: "/productos/pulseras/aris",
           precio: 110,
-          precio_descuento: 137.5
+          precio_descuento: 137.9
         },
         {
           id: "0000021",
@@ -611,7 +611,7 @@ export default {
             "/productos-webp/pulseras/atenea-cel.webp 500w, /productos-webp/pulseras/atenea.webp 1000w",
           link: "/productos/pulseras/atenea",
           precio: 110,
-          precio_descuento: 137.5
+          precio_descuento: 137.9
         },
         {
           id: "0000022",
@@ -621,7 +621,7 @@ export default {
             "/productos-webp/pulseras/nudillo-perlas-cel.webp 500w, /productos-webp/pulseras/nudillo-perlas.webp 1000w",
           link: "/productos/pulseras/nudillo-perlas",
           precio: 118,
-          precio_descuento: 147.5
+          precio_descuento: 147.9
         },
         {
           id: "0000023",

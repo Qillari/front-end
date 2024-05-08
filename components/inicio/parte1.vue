@@ -4,19 +4,20 @@
       <swiper-container
         slides-per-view="1"
         speed="500"
-        loop="true"
         autoplay-delay="2500"
-        autoplay-disable-on-interaction="false"
+        pagination="true" 
+        pagination-clickable="true"
       >
         <swiper-slide>
           <div class="background1">
             <div class="container">
               <div class="row">
                 <div class="col-4">
-                  <div class="flex">
+                  <div>
                     <h1>Brilla con elegancia</h1>
                     <button>Explora la colección</button>
                   </div>
+                  <br />
                 </div>
               </div>
             </div>
@@ -27,7 +28,7 @@
             <div class="container">
               <div class="row">
                 <div class="col-4">
-                  <div class="flex text1">
+                  <div class="text1">
                     <h2>Vínculos inquebrantables, joyas eternas</h2>
                   </div>
                 </div>
@@ -40,7 +41,7 @@
             <div class="container">
               <div class="row">
                 <div class="col-4" align="left">
-                  <div class="flex text1">
+                  <div class="text1">
                     <h2>Detalles que resaltan tu esencia</h2>
                     <button>Descubre tu estilo</button>
                   </div>
@@ -74,6 +75,9 @@
   .text1 {
     display: none !important
   }
+  .row {
+    align-items: flex-end;
+  }
 }
 @media screen and (min-width: 721px) and (max-width: 960px) {
   .col-4 {
@@ -84,6 +88,12 @@
     margin-left: 10px;
     font-weight: bold;
   }
+  .flex {
+    justify-content: center;
+  }
+  .row {
+    align-items: center;
+  }
 }
 @media screen and (min-width: 961px) {
   .col-4 {
@@ -93,6 +103,9 @@
     transform: scale(1.2);
     margin-left: 10px;
     font-weight: bold;
+  }
+  .row {
+    align-items: center;
   }
 }
 swiper-container {
@@ -144,7 +157,6 @@ button:hover {
   flex-wrap: wrap;
   margin-left: 0;
   margin-right: 0;
-  align-items: center;
   height: 100%;
 }
 p,
@@ -171,12 +183,6 @@ h2 {
   background-size: cover;
   background-position: top; 
   background-image: url("/inicio/parte1/ima4-webp-compu.webp");
-}
-.flex {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  height: 100%;
 }
 </style>
 

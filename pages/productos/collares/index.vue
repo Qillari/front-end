@@ -49,12 +49,12 @@
             </div>
             <br />
             <button @click="ordenarPorPrecioMax" class="button-precio">
-              valor maximo
+              ver de mayor a menor precio
             </button>
             <br />
             <br />
             <button @click="ordenarPorPrecioMin" class="button-precio">
-              valor Minimo
+              ver de menor a mayor precio
             </button>
             <br />
             <br />
@@ -101,12 +101,12 @@
             </div>
             <br />
             <button @click="ordenarPorPrecioMax" class="button-precio">
-              valor maximo
+              ver de mayor a menor precio
             </button>
             <br />
             <br />
             <button @click="ordenarPorPrecioMin" class="button-precio">
-              valor Minimo
+              ver de menor a mayor precio
             </button>
             <br />
             <br />
@@ -491,7 +491,7 @@ export default {
             "/productos-webp/collares/doble-estrella-y-saturno/ima1-cel.webp 500w, /productos-webp/collares/doble-estrella-y-saturno/ima1.webp 1000w",
           link: "/productos/collares/doble-estrella-y-saturno",
           precio: 125,
-          precio_descuento: 156.3
+          precio_descuento: 156.9
         },
         {
           id: "0000014",
@@ -511,7 +511,7 @@ export default {
             "/productos-webp/collares/letra/ima1-cel.webp 500w, /productos-webp/collares/letra/ima1.webp 1000w",
           link: "/productos/collares/letra",
           precio: 105,
-          precio_descuento: 131.3
+          precio_descuento: 131.9
         },
         {
           id: "0000017",
@@ -521,7 +521,7 @@ export default {
             "/productos-webp/collares/rosa/ima1-cel.webp 500w, /productos-webp/collares/rosa/ima1.webp 1000w",
           link: "/productos/collares/rosa",
           precio: 101,
-          precio_descuento: 126.3
+          precio_descuento: 126.9
         },
         {
           id: "0000018",
@@ -531,7 +531,7 @@ export default {
             "/productos-webp/collares/sol-brillante-cel.webp 500w, /productos-webp/collares/sol-brillante.webp 1000w",
           link: "/productos/collares/sol-brillante",
           precio: 115,
-          precio_descuento: 143.8
+          precio_descuento: 143.9
         },
       ],
     };

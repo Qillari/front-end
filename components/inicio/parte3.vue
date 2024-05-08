@@ -165,7 +165,7 @@ export default {
             "/productos-webp/aretes/argollas-tamaño-l/ima1-cel-opcion2.webp 500w, /productos-webp/aretes/argollas-tamaño-l/ima1-opcion2.webp 1000w",
           link: "/productos/aretes/argollas-tamano-l",
           precio: 94,
-          precio_descuento: 112.5,
+          precio_descuento: 112.9,
         },
         {
           id: "0000024",
@@ -176,7 +176,7 @@ export default {
             "/productos-webp/pulseras/regulable-arbol-de-la-vida-cel/ima1-cel.webp 500w, /productos-webp/pulseras/regulable-arbol-de-la-vida/ima1.webp 1000w",
           link: "/productos/pulseras/arbol-de-la-vida-regulable",
           precio: 110,
-          precio_descuento: 137.5,
+          precio_descuento: 137.9,
         },
       ],
     };

@@ -49,12 +49,12 @@
           </div>
           <br />
           <button @click="ordenarPorPrecioMax" class="button-precio">
-            valor maximo
+            ver de mayor a menor precio
           </button>
           <br />
           <br />
           <button @click="ordenarPorPrecioMin" class="button-precio">
-            valor Minimo
+            ver de menor a mayor precio
           </button>
           <br />
           <br />
@@ -101,12 +101,12 @@
             </div>
             <br />
             <button @click="ordenarPorPrecioMax" class="button-precio">
-              valor maximo
+              ver de mayor a menor precio
             </button>
             <br />
             <br />
             <button @click="ordenarPorPrecioMin" class="button-precio">
-              valor Minimo
+              ver de menor a mayor precio
             </button>
             <br />
             <NuxtLink to="/productos" class="link"> Productos (20) </NuxtLink>
@@ -504,7 +504,7 @@ export default {
             "/productos-webp/aretes/argollas-tamaño-l/ima1-cel-opcion2.webp 500w, /productos-webp/aretes/argollas-tamaño-l/ima1-opcion2.webp 1000w",
           link: "/productos/aretes/argollas-tamano-l",
           precio: 94,
-          precio_descuento: 112.8,
+          precio_descuento: 112.9,
         },
         {
           id: "000008",
@@ -514,7 +514,7 @@ export default {
             "/productos-webp/aretes/isabelle-cel.webp 500w, /productos-webp/aretes/isabelle.webp 1000w",
           link: "/productos/aretes/isabelle",
           precio: 88,
-          precio_descuento: 105.6,
+          precio_descuento: 105.9,
         },
         {
           id: "000009",
@@ -524,7 +524,7 @@ export default {
             "/productos-webp/aretes/perlas.webp 500w, /productos-webp/aretes/perlas.webp 1000w",
           link: "/productos/aretes/perlas",
           precio: 98,
-          precio_descuento: 117.6,
+          precio_descuento: 117.9,
         },
         {
           id: "000010",
@@ -534,7 +534,7 @@ export default {
             "/productos-webp/aretes/punto-de-luz-cel.webp 500w, /productos-webp/aretes/punto-de-luz.webp 1000w",
           link: "/productos/aretes/punto-de-luz",
           precio: 78,
-          precio_descuento: 93.6,
+          precio_descuento: 93.9,
         },
       ],
     };

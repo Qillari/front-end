@@ -2,7 +2,7 @@
   <div class="background">
     <br />
     <div class="container">
-      <div>
+      <div style="display: flex; align-items: flex-start">
         <div class="flex">
           <a href="https://www.facebook.com/Qillari">
             <picture>
@@ -40,7 +40,26 @@
               /> </picture
           ></a>
         </div>
-        <br />
+        
+        <div>
+            <a href="https://www.facebook.com/Qillari">
+              <picture>
+                <source
+                  srcset="/tiktok.webp"
+                  class="imagen"
+                  media="(min-width: 500px)"
+                  alt="logo de facebook"
+                  loading="lazy"
+                />
+                <img
+                  src="/tiktok.webp"
+                  class="imagen1"
+                  alt="logo de facebook"
+                  loading="lazy"
+                />
+              </picture>
+            </a>
+          </div>
       </div>
     </div>
   </div>
@@ -59,7 +78,7 @@
     display: flex;
     flex-direction: column;
     gap: 10px;
-    align-items: flex-end;
+    align-items: flex-start;
     justify-content: center;
     height: 100%;
   }
@@ -97,6 +116,13 @@ p {
   height: 100%;
   object-fit: contain;
   filter: invert(100%);
+  padding-left: 10px;
+}
+.imagen1 {
+  max-width: 45px;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }
 .before-enter {
   opacity: 0;

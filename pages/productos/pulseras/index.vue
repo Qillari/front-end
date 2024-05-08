@@ -49,12 +49,12 @@
           </div>
           <br />
           <button @click="ordenarPorPrecioMax" class="button-precio">
-            valor maximo
+            ver de mayor a menor precio
           </button>
           <br />
           <br />
           <button @click="ordenarPorPrecioMin" class="button-precio">
-            valor Minimo
+            ver de menor a mayor precio
           </button>
           <br />
           <br />
@@ -101,12 +101,12 @@
             </div>
             <br />
             <button @click="ordenarPorPrecioMax" class="button-precio">
-              valor maximo
+              ver de mayor a menor precio
             </button>
             <br />
             <br />
             <button @click="ordenarPorPrecioMin" class="button-precio">
-              valor Minimo
+              ver de menor a mayor precio
             </button>
             <br />
             <br />
@@ -491,7 +491,7 @@ export default {
             "/productos-webp/pulseras/regulable-arbol-de-la-vida/ima1-cel.webp 500w, /productos-webp/pulseras/regulable-arbol-de-la-vida/ima1.webp 1000w",
           link: "/productos/pulseras/arbol-de-la-vida-regulable",
           precio: 110,
-          precio_descuento: 137.5
+          precio_descuento: 137.9
         },
         {
           id: "0000020",
@@ -501,7 +501,7 @@ export default {
             "/productos-webp/pulseras/aris-cel.webp 500w, /productos-webp/pulseras/aris.webp 1000w",
           link: "/productos/pulseras/aris",
           precio: 110,
-          precio_descuento: 137.5
+          precio_descuento: 137.9
         },
         {
           id: "0000021",
@@ -511,7 +511,7 @@ export default {
             "/productos-webp/pulseras/atenea-cel.webp 500w, /productos-webp/pulseras/atenea.webp 1000w",
           link: "/productos/pulseras/atenea",
           precio: 110,
-          precio_descuento: 137.5
+          precio_descuento: 137.9
         },
         {
           id: "0000022",
@@ -521,7 +521,7 @@ export default {
             "/productos-webp/pulseras/nudillo-perlas-cel.webp 500w, /productos-webp/pulseras/nudillo-perlas.webp 1000w",
           link: "/productos/pulseras/nudillo-perlas",
           precio: 118,
-          precio_descuento: 147.5
+          precio_descuento: 147.9
         },
         {
           id: "0000023",

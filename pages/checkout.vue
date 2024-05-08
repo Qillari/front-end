@@ -55,7 +55,7 @@
               <br />
               <input
                 type="text"
-                placeholder="Direccion"
+                placeholder="Dirección"
                 v-model="name_street1"
               />
               <br />
@@ -105,13 +105,13 @@
               name="telefono"
               pattern="[0-9]+"
               title="Solo se permiten números y el símbolo '+'"
-              placeholder="+###-###-####"
+              placeholder="Número de Celular"
               v-model="telefono"
               class="input"
             />
             <br />
             <br />
-            <input type="text" placeholder="dirección" v-model="direccion" class="input" />
+            <input type="text" placeholder="Dirección" v-model="direccion" class="input" />
             <br />
             <br />
             <input
@@ -138,7 +138,14 @@
                 <br />
                 <h2>Productos</h2>
                 <p>
-                  {{ preciototal }}
+                  Precio: {{ preciototal }}
+                </p>
+                <p>
+                  Envió: {{ precio_envio }}
+                </p>
+                <hr />
+                <p>
+                  Total: {{ preciototal + precio_envio }}
                 </p>
               </div>
               <hr
@@ -307,6 +314,7 @@ export default {
       yape: false,
       loading: false,
       imagen_de_pago: null,
+      precio_envio: 7.9
     };
   },
   methods: {
@@ -318,13 +326,13 @@ export default {
       );
       if (!cardForm) {
         cardForm = mp.cardForm({
-          amount: this.preciototal + "",
+          amount: this.preciototal + this.precio_envio + "",
           iframe: true,
           form: {
             id: "form-checkout",
             cardNumber: {
               id: "form-checkout__cardNumber",
-              placeholder: "Numero de tarjeta",
+              placeholder: "Número de tarjeta",
             },
             expirationDate: {
               id: "form-checkout__expirationDate",
@@ -440,7 +448,7 @@ export default {
             id: "form-checkout",
             cardNumber: {
               id: "form-checkout__cardNumber",
-              placeholder: "Numero de tarjeta",
+              placeholder: "Número de tarjeta",
             },
             expirationDate: {
               id: "form-checkout__expirationDate",

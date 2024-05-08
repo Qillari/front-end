@@ -49,12 +49,12 @@
             </div>
             <br />
             <button @click="ordenarPorPrecioMax" class="button-precio">
-              valor maximo
+              ver de mayor a menor precio
             </button>
             <br />
             <br />
             <button @click="ordenarPorPrecioMin" class="button-precio">
-              valor Minimo
+              ver de menor a mayor precio
             </button>
             <br />
           </div>
@@ -100,12 +100,12 @@
             </div>
             <br />
             <button @click="ordenarPorPrecioMax" class="button-precio">
-              valor maximo
+              ver de mayor a menor precio
             </button>
             <br />
             <br />
             <button @click="ordenarPorPrecioMin" class="button-precio">
-              valor Minimo
+              ver de menor a mayor precio
             </button>
             <br />
             <NuxtLink to="/productos" class="link"> Productos (20) </NuxtLink>

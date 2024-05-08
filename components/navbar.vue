@@ -5,7 +5,7 @@
         <NuxtLink to="/" class="navbar-brand" title="Página de inicio">
           <img
             src="/logo.png"
-            style="width: 100px; height: 100%; object-fit: contain"
+            style="width: 100%; height: 42px; object-fit: contain"
             alt="Logo"
             loading="lazy"
           />
@@ -69,6 +69,7 @@
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   z-index: 999;
   transition: background-color 0.3s;
+  background-color: black;
 }
 .navbar1 {
   background-color: black;
@@ -79,10 +80,10 @@
   align-items: center;
 }
 .navbar-brand {
-  font-size: 24px;
   font-weight: bold;
   color: #333333;
   text-decoration: none;
+  padding-top: 5px;
   padding-left: 2%;
 }
 .navbar-nav {
