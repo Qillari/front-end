@@ -5,8 +5,8 @@
         slides-per-view="1"
         speed="500"
         autoplay-delay="2500"
-        pagination="true" 
-        pagination-clickable="true"
+        :pagination="{ clickable: true }"
+        v-if="swiperInitialized"
       >
         <swiper-slide>
           <div class="background1">
@@ -195,4 +195,16 @@ useHead({
     },
   ],
 });
+</script>
+<script>
+export default {
+  data() {
+    return {
+      swiperInitialized: false
+    }
+  },
+  beforeMount() {
+    this.swiperInitialized = true
+  }
+}
 </script>
