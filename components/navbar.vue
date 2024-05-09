@@ -5,7 +5,7 @@
         <NuxtLink to="/" class="navbar-brand" title="Página de inicio">
           <img
             src="/logo.png"
-            style="width: 100%; height: 42px; object-fit: contain"
+            class="logo1"
             alt="Logo"
             loading="lazy"
           />
@@ -37,22 +37,29 @@
 </template>
 
 <style scoped>
-@media screen and (min-width: 720px) {
+@media screen and (min-width: 721px) {
   .nav-link.offcan {
     display: none;
   }
   .nav-item.offcan {
     display: none;
   }
+  .logo1 {
+    width: 100%; height: 42px ; object-fit: contain
+  }
 }
-@media screen and (max-width: 721px) {
+@media screen and (max-width: 720px) {
   .nav-link.link1 {
     display: none;
   }
   .nav-item.link1 {
     display: none;
   }
+  .logo1 {
+    width: 100%; height: 100%; max-width: 100px ; object-fit: contain
+  }
 }
+
 .input1 {
   padding: 8px;
   margin-right: 40px;
