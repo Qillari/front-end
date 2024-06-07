@@ -108,21 +108,25 @@
               ver de menor a mayor precio
             </button>
             <br />
-            <NuxtLink to="/productos" class="link"> Productos (20) </NuxtLink>
-            <br />
-            <NuxtLink to="/productos/anillos" class="link">
-              Anillos (6)
+            <NuxtLink to="/productos" class="link"> 
+              Productos ({{ productos_totales }}) 
             </NuxtLink>
             <br />
-            <NuxtLink to="/productos/aretes" class="link"> Aretes (4) </NuxtLink>
+            <NuxtLink to="/productos/anillos" class="link">
+              Anillos ({{ anillos_totales }})
+            </NuxtLink>
+            <br />
+            <NuxtLink to="/productos/aretes" class="link"> 
+              Aretes ({{ aretes_totales }})
+            </NuxtLink>
             <br />
             <NuxtLink to="/productos/collares" class="link">
-              Collares (5)</NuxtLink
-            >
+              Collares ({{ pulseras_totales }})
+            </NuxtLink>
             <br />
             <NuxtLink to="/productos/pulseras" class="link">
-              Pulseras (5)</NuxtLink
-            >
+              Pulseras ({{ collares_totales }})
+            </NuxtLink>
           </div>
         </div>
       </div>
@@ -457,6 +461,11 @@ export default {
   data() {
     return {
       buscar: "",
+      productos_totales: 20,
+      anillos_totales: 6,
+      aretes_totales: 4,
+      collares_totales: 5,
+      pulseras_totales: 5,
       precioMin: null,
       precioMax: null,
       precioMinRange: 0,

@@ -111,21 +111,25 @@
             </button>
             <br />
             <br />
-            <NuxtLink to="/productos" class="link"> Productos (20) </NuxtLink>
-            <br />
-            <NuxtLink to="/productos/anillos" class="link">
-              Anillos (6)
+            <NuxtLink to="/productos" class="link">
+              Productos ({{ productos_totales }}) 
             </NuxtLink>
             <br />
-            <NuxtLink to="/productos/aretes" class="link"> Aretes (4)</NuxtLink>
+            <NuxtLink to="/productos/anillos" class="link">
+              Anillos ({{ anillos_totales }})
+            </NuxtLink>
+            <br />
+            <NuxtLink to="/productos/aretes" class="link"> 
+              Aretes ({{ aretes_totales }})
+            </NuxtLink>
             <br />
             <NuxtLink to="/productos/collares" class="link">
-              Collares (5)</NuxtLink
-            >
+              Collares ({{ collares_totales }})
+            </NuxtLink>
             <br />
             <NuxtLink to="/productos/pulseras" class="link">
-              Pulseras (5)</NuxtLink
-            >
+              Pulseras ({{ pulseras_totales }})
+            </NuxtLink>
           </div>
         </div>
       </div>
@@ -402,6 +406,11 @@ export default {
   data() {
     return {
       buscar: "",
+      productos_totales: 20,
+      anillos_totales: 6,
+      aretes_totales: 4,
+      collares_totales: 5,
+      pulseras_totales: 5,
       precioMin: null,
       precioMax: null,
       precioMinRange: 0,
@@ -511,6 +520,36 @@ export default {
           precio_descuento: 93.9,
         },
         {
+          id: "0000033",
+          nombre: "Aretes Nudillos",
+          ima: "",
+          srcset:
+            "",
+          link: "/productos/aretes/nudillos",
+          precio: 66,
+          precio_descuento: 79.2,
+        },
+        {
+          id: "0000034",
+          nombre: "Aretes entorchado S",
+          ima: "",
+          srcset:
+            "",
+          link: "/productos/aretes/entorchado",
+          precio: 68,
+          precio_descuento: 81.6,
+        },
+        {
+          id: "0000035",
+          nombre: "Aretes entorchado M",
+          ima: "",
+          srcset:
+            "",
+          link: "/productos/aretes/entorchado",
+          precio: 100,
+          precio_descuento: 120,
+        },
+        {
           id: "0000012",
           nombre: "Collar Cristal",
           ima: "/productos-webp/collares/cristal/ima1.webp",
@@ -552,7 +591,7 @@ export default {
         },
         {
           id: "0000017",
-          nombre: "Collar de Rosa",
+          nombre: "Collar Rosa",
           ima: "/productos-webp/collares/rosa/ima1.webp",
           srcset:
             "/productos-webp/collares/rosa/ima1-cel.webp 500w, /productos-webp/collares/rosa/ima1.webp 1000w",
@@ -569,6 +608,33 @@ export default {
           link: "/productos/collares/sol-brillante",
           precio: 115,
           precio_descuento: 143.9
+        },
+        {
+          id: "0000016",
+          nombre: "Collar de Ojo Turco",
+          ima: "",
+          srcset: "",
+          link: "/productos/collares/ojo-turco",
+          precio_descuento: 125,
+          precio: 100,
+        },
+        {
+          id: "0000032",
+          nombre: "Collar de Ola",
+          ima: "",
+          srcset: "",
+          link: "productos/collares/ola",
+          precio_descuento: 143.75,
+          precio: 115,
+        },
+        {
+          id: "0000030",
+          nombre: "Collar Punto de Luz",
+          ima: "",
+          srcset: "",
+          link: "/productos/collares/punto-de-luz",
+          precio_descuento: 132.5,
+          precio: 106,
         },
         {
           id: "0000024",
@@ -627,6 +693,16 @@ export default {
           srcset:
             "/productos-webp/pulseras/saturno/ima1-cel.webp 500w, /productos-webp/pulseras/saturno/ima1.webp 1000w",
           link: "/productos/pulseras/saturno",
+          precio: 100,
+          precio_descuento: 125
+        },
+        {
+          id: "0000031",
+          nombre: "Pulsera corazón fino regulable",
+          ima: "",
+          srcset:
+            "",
+          link: "/productos/pulseras/corazon-fino-regulable",
           precio: 100,
           precio_descuento: 125
         },

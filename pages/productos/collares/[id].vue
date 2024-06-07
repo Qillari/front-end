@@ -143,6 +143,7 @@ export default {
         nombre: "",
         descripcion: "",
         price: "",
+        descuento: "",
         fotos: [],
         amount: 1,
         stock: "",
@@ -193,6 +194,7 @@ export default {
       this.producto.nombre = response.data.nombre;
       this.producto.descripcion = response.data.descripcion;
       this.producto.price = response.data.precio;
+      this.producto.descuento = response.data["precio-descuento"];
       this.producto.fotos = response.data.fotos;
       this.producto.stock = response.data.stock;
       this.producto.selectedImage = this.producto.fotos[0];

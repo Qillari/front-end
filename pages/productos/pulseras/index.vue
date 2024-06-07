@@ -110,21 +110,25 @@
             </button>
             <br />
             <br />
-            <NuxtLink to="/productos" class="link"> Productos (20) </NuxtLink>
-            <br />
-            <NuxtLink to="/productos/anillos" class="link">
-              Anillos (6)
+            <NuxtLink to="/productos" class="link"> 
+              Productos ({{ productos_totales }}) 
             </NuxtLink>
             <br />
-            <NuxtLink to="/productos/aretes" class="link"> Aretes (4)</NuxtLink>
+            <NuxtLink to="/productos/anillos" class="link">
+              Anillos ({{ anillos_totales }})
+            </NuxtLink>
+            <br />
+            <NuxtLink to="/productos/aretes" class="link"> 
+              Aretes ({{ aretes_totales }})
+            </NuxtLink>
             <br />
             <NuxtLink to="/productos/collares" class="link">
-              Collares (5)</NuxtLink
-            >
+              Collares ({{ pulseras_totales }})
+            </NuxtLink>
             <br />
             <NuxtLink to="/productos/pulseras" class="link">
-              Pulseras (5)</NuxtLink
-            >
+              Pulseras ({{ collares_totales }})
+            </NuxtLink>
           </div>
         </div>
       </div>
@@ -462,6 +466,11 @@ export default {
   data() {
     return {
       buscar: "",
+      productos_totales: 20,
+      anillos_totales: 6,
+      aretes_totales: 4,
+      collares_totales: 5,
+      pulseras_totales: 5,
       precioMin: null,
       precioMax: null,
       precioMinRange: 0,
@@ -527,6 +536,16 @@ export default {
           srcset:
             "/productos-webp/pulseras/saturno/ima1-cel.webp 500w, /productos-webp/pulseras/saturno/ima1-cel.webp 1000w",
           link: "/productos/pulseras/saturno",
+          precio: 100,
+          precio_descuento: 125
+        },
+        {
+          id: "0000031",
+          nombre: "Pulsera corazón fino regulable",
+          ima: "",
+          srcset:
+            "",
+          link: "/productos/pulseras/corazon-fino-regulable",
           precio: 100,
           precio_descuento: 125
         },
