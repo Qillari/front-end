@@ -139,30 +139,32 @@
           <div class="columns">
             <NuxtLink
               v-for="producto in productosFiltrados"
-              :key="producto.id"
+              :key="producto.producto_id"
               class="card"
-              :to="producto.link"
+              :to="producto.url"
             >
+            <div v-for="fotoproducto in producto.fotos" :key="fotoproducto">
               <picture>
                 <source
-                  :srcset="producto.srcset"
+                  :srcset="fotoproducto.srcset1"
                   class="imagen"
                   style="width: 100%; height: 250px; object-fit: contain"
                   :alt="producto.nombre"
                   loading="lazy"
                 />
                 <img
-                  :src="producto.ima"
+                  :src="fotoproducto.src1"
                   style="width: 100%; height: 250px; object-fit: contain"
                   :alt="producto.nombre"
                   loading="lazy"
                 />
               </picture>
+            </div>
               <div class="container">
                 <br />
-                <h2 align="center" class="nomb">{{ producto.nombre }}</h2>
+                <h2 align="center" class="nomb">{{ producto.titulo }}</h2>
                 <div style="display: flex; justify-content: center;">
-                  <p align="center" style="color: grey; text-decoration: line-through; margin: 0 10px;">{{ producto.precio_descuento }}</p>
+                  <p align="center" style="color: grey; text-decoration: line-through; margin: 0 10px;">{{ producto.precio_sin_descuento }}</p>
                   <p align="center" style="color: black; font-size: 35px; margin: 0">S/.{{ producto.precio }}</p>
                 </div>
                 <br />
@@ -406,11 +408,11 @@ export default {
   data() {
     return {
       buscar: "",
-      productos_totales: 20,
-      anillos_totales: 6,
-      aretes_totales: 4,
-      collares_totales: 5,
-      pulseras_totales: 5,
+      productos_totales: 0,
+      anillos_totales: 0,
+      aretes_totales: 0,
+      collares_totales: 0,
+      pulseras_totales: 0,
       precioMin: null,
       precioMax: null,
       precioMinRange: 0,
@@ -418,295 +420,7 @@ export default {
       currentPage: 1,
       itemsPerPage: 12,
       isFixed: false,
-      productos: [
-        {
-          id: "000001",
-          nombre: "Anillo Aurora",
-          ima: "/productos-webp/anillos/aurora.webp",
-          srcset:
-            "/productos-webp/anillos/aurora.webp 500w, /productos-webp/anillos/aurora.webp 1000w",
-          link: "/productos/anillos/aurora",
-          precio: 55,
-          precio_descuento: 66,
-        },
-        {
-          id: "000002",
-          nombre: "Anillo Entorchado Doble",
-          ima: "/productos-webp/anillos/entorchado-doble.webp",
-          srcset:
-            "/productos-webp/anillos/entorchado-doble-cel.webp 500w, /productos-webp/anillos/entorchado-doble.webp 1000w",
-          link: "/productos/anillos/entorchado-doble",
-          precio: 55,
-          precio_descuento: 66,
-        },
-        {
-          id: "000003",
-          nombre: "Anillo Entorchado",
-          ima: "/productos-webp/anillos/entorchado/ima1.webp",
-          srcset:
-            "/productos-webp/anillos/entorchado/ima1-cel.webp 500w, /productos-webp/anillos/entorchado/ima1.webp 1000w",
-          link: "/productos/anillos/entorchado",
-          precio: 55,
-          precio_descuento: 66,
-        },
-        {
-          id: "000004",
-          nombre: "Anillo Gaviota",
-          ima: "/productos-webp/anillos/gaviota/ima1.webp",
-          srcset:
-            "/productos-webp/anillos/gaviota/ima1-cel.webp 500w, /productos-webp/anillos/gaviota/ima1.webp 1000w",
-          link: "/productos/anillos/gaviota",
-          precio: 55,
-          precio_descuento: 66,
-        },
-        {
-          id: "000005",
-          nombre: "Anillo Ola",
-          ima: "/productos-webp/anillos/ola/ima1.webp",
-          srcset:
-            "/productos-webp/anillos/ola/ima1.webp 500w, /productos-webp/anillos/ola/ima1.webp 1000w",
-          link: "/productos/anillos/ola",
-          precio: 55,
-          precio_descuento: 66,
-        },
-        {
-          id: "000006",
-          nombre: "Anillo Punto de Luz",
-          ima: "/productos-webp/anillos/punto-de-luz.webp",
-          srcset:
-            "/productos-webp/anillos/punto-de-luz-cel.webp 500w, /productos-webp/anillos/punto-de-luz.webp 1000w",
-          link: "/productos/anillos/punto-de-luz",
-          precio: 55,
-          precio_descuento: 66,
-        },
-        {
-          id: "000007",
-          nombre: "Aretes Argollas tamaño L",
-          ima: "/productos-webp/aretes/argollas-tamaño-l/ima1-opcion2.webp",
-          srcset:
-            "/productos-webp/aretes/argollas-tamaño-l/ima1-cel-opcion2.webp 500w, /productos-webp/aretes/argollas-tamaño-l/ima1-opcion2.webp 1000w",
-          link: "/productos/aretes/argollas-tamano-l",
-          precio: 94,
-          precio_descuento: 112.9,
-        },
-        {
-          id: "000008",
-          nombre: "Aretes isabelle",
-          ima: "/productos-webp/aretes/isabelle.webp",
-          srcset:
-            "/productos-webp/aretes/isabelle-cel.webp 500w, /productos-webp/aretes/isabelle.webp 1000w",
-          link: "/productos/aretes/isabelle",
-          precio: 88,
-          precio_descuento: 105.9,
-        },
-        {
-          id: "000009",
-          nombre: "Aretes perlas",
-          ima: "/productos-webp/aretes/perlas.webp",
-          srcset:
-            "/productos-webp/aretes/perlas.webp 500w, /productos-webp/aretes/perlas.webp 1000w",
-          link: "/productos/aretes/perlas",
-          precio: 98,
-          precio_descuento: 117.9,
-        },
-        {
-          id: "000010",
-          nombre: "Aretes Punto de Luz",
-          ima: "/productos-webp/aretes/punto-de-luz.webp",
-          srcset:
-            "/productos-webp/aretes/punto-de-luz-cel.webp 500w, /productos-webp/aretes/punto-de-luz.webp 1000w",
-          link: "/productos/aretes/punto-de-luz",
-          precio: 78,
-          precio_descuento: 93.9,
-        },
-        {
-          id: "0000033",
-          nombre: "Aretes Nudillos",
-          ima: "",
-          srcset:
-            "",
-          link: "/productos/aretes/nudillos",
-          precio: 66,
-          precio_descuento: 79.2,
-        },
-        {
-          id: "0000034",
-          nombre: "Aretes entorchado S",
-          ima: "",
-          srcset:
-            "",
-          link: "/productos/aretes/entorchado",
-          precio: 68,
-          precio_descuento: 81.6,
-        },
-        {
-          id: "0000035",
-          nombre: "Aretes entorchado M",
-          ima: "",
-          srcset:
-            "",
-          link: "/productos/aretes/entorchado",
-          precio: 100,
-          precio_descuento: 120,
-        },
-        {
-          id: "0000012",
-          nombre: "Collar Cristal",
-          ima: "/productos-webp/collares/cristal/ima1.webp",
-          srcset:
-            "/productos-webp/collares/cristal/ima1-cel.webp 500w, /productos-webp/collares/cristal/ima1.webp 1000w",
-          link: "/productos/collares/cristal",
-          precio: 120,
-          precio_descuento: 150
-        },
-        {
-          id: "0000013",
-          nombre: "Collar Doble Estrella y Saturno",
-          ima: "/productos-webp/collares/doble-estrella-y-saturno/ima1.webp",
-          srcset:
-            "/productos-webp/collares/doble-estrella-y-saturno/ima1-cel.webp 500w, /productos-webp/collares/doble-estrella-y-saturno/ima1.webp 1000w",
-          link: "/productos/collares/doble-estrella-y-saturno",
-          precio: 125,
-          precio_descuento: 156.9
-        },
-        {
-          id: "0000014",
-          nombre: "Collar Flor y Perla",
-          ima: "/productos-webp/collares/flor-y-perla/ima1.webp",
-          srcset:
-            "/productos-webp/collares/flor-y-perla/ima1-cel.webp 500w, /productos-webp/collares/flor-y-perla/ima1.webp 1000w",
-          link: "/productos/collares/flor-y-perla",
-          precio: 120,
-          precio_descuento: 150
-        },
-        {
-          id: "0000015",
-          nombre: "Collar con Letra",
-          ima: "/productos-webp/collares/letra/ima1.webp",
-          srcset:
-            "/productos-webp/collares/letra-cel/ima1.webp 500w, /productos-webp/collares/letra/ima1.webp 1000w",
-          link: "/productos/collares/letra",
-          precio: 105,
-          precio_descuento: 131.9
-        },
-        {
-          id: "0000017",
-          nombre: "Collar Rosa",
-          ima: "/productos-webp/collares/rosa/ima1.webp",
-          srcset:
-            "/productos-webp/collares/rosa/ima1-cel.webp 500w, /productos-webp/collares/rosa/ima1.webp 1000w",
-          link: "/productos/collares/rosa",
-          precio: 101,
-          precio_descuento: 126.9
-        },
-        {
-          id: "0000018",
-          nombre: "Collar Sol Brillante",
-          ima: "/productos-webp/collares/sol-brillante.webp",
-          srcset:
-            "/productos-webp/collares/sol-brillante-cel.webp 500w, /productos-webp/collares/sol-brillante.webp 1000w",
-          link: "/productos/collares/sol-brillante",
-          precio: 115,
-          precio_descuento: 143.9
-        },
-        {
-          id: "0000016",
-          nombre: "Collar de Ojo Turco",
-          ima: "",
-          srcset: "",
-          link: "/productos/collares/ojo-turco",
-          precio_descuento: 125,
-          precio: 100,
-        },
-        {
-          id: "0000032",
-          nombre: "Collar de Ola",
-          ima: "",
-          srcset: "",
-          link: "productos/collares/ola",
-          precio_descuento: 143.75,
-          precio: 115,
-        },
-        {
-          id: "0000030",
-          nombre: "Collar Punto de Luz",
-          ima: "",
-          srcset: "",
-          link: "/productos/collares/punto-de-luz",
-          precio_descuento: 132.5,
-          precio: 106,
-        },
-        {
-          id: "0000024",
-          nombre: "Pulsera Arbol De La Vida Regulable",
-          ima: "/productos-webp/pulseras/regulable-arbol-de-la-vida/ima1.webp",
-          srcset:
-            "/productos-webp/pulseras/regulable-arbol-de-la-vida/ima1-cel.webp 500w, /productos-webp/pulseras/regulable-arbol-de-la-vida/ima1.webp 1000w",
-          link: "/productos/pulseras/arbol-de-la-vida-regulable",
-          precio: 110,
-          precio_descuento: 137.9
-        },
-        {
-          id: "0000020",
-          nombre: "Pulsera Aris",
-          ima: "/productos-webp/pulseras/aris.webp",
-          srcset:
-            "/productos-webp/pulseras/aris-cel.webp 500w, /productos-webp/pulseras/aris.webp 1000w",
-          link: "/productos/pulseras/aris",
-          precio: 110,
-          precio_descuento: 137.9
-        },
-        {
-          id: "0000021",
-          nombre: "Pulsera Atenea",
-          ima: "/productos-webp/pulseras/atenea.webp",
-          srcset:
-            "/productos-webp/pulseras/atenea-cel.webp 500w, /productos-webp/pulseras/atenea.webp 1000w",
-          link: "/productos/pulseras/atenea",
-          precio: 110,
-          precio_descuento: 137.9
-        },
-        {
-          id: "0000022",
-          nombre: "Pulsera Nudillo Perlas",
-          ima: "/productos-webp/pulseras/nudillo-perlas.webp",
-          srcset:
-            "/productos-webp/pulseras/nudillo-perlas-cel.webp 500w, /productos-webp/pulseras/nudillo-perlas.webp 1000w",
-          link: "/productos/pulseras/nudillo-perlas",
-          precio: 118,
-          precio_descuento: 147.9
-        },
-        {
-          id: "0000023",
-          nombre: "Pulsera Perlas Sofia",
-          ima: "/productos-webp/pulseras/perlas-sofia.webp",
-          srcset:
-            "/productos-webp/pulseras/perlas-sofia-cel.webp 500w, /productos-webp/pulseras/perlas-sofia.webp 1000w",
-          link: "/productos/pulseras/perlas-sofia",
-          precio: 108,
-          precio_descuento: 135
-        },
-        {
-          id: "0000025",
-          nombre: "Pulsera Saturno",
-          ima: "/productos/pulseras/saturno/ima1.webp",
-          srcset:
-            "/productos-webp/pulseras/saturno/ima1-cel.webp 500w, /productos-webp/pulseras/saturno/ima1.webp 1000w",
-          link: "/productos/pulseras/saturno",
-          precio: 100,
-          precio_descuento: 125
-        },
-        {
-          id: "0000031",
-          nombre: "Pulsera corazón fino regulable",
-          ima: "",
-          srcset:
-            "",
-          link: "/productos/pulseras/corazon-fino-regulable",
-          precio: 100,
-          precio_descuento: 125
-        },
-      ],
+      productos: [],
     };
   },
   computed: {
@@ -734,7 +448,7 @@ export default {
     },
     filtro() {
       return this.productos.filter((producto) =>
-        producto.nombre
+        producto.titulo
           .toLowerCase()
           .normalize("NFD")
           .replace(/[\u0300-\u036f]/g, "")
@@ -782,7 +496,27 @@ export default {
     },
     validate() {
       this.buscar = this.buscar.replace(/[^a-zA-Z0-9]/g, '');
+    },
+    Total_productos() {
+      const { $data } = this.$nuxt;
+      this.datos = $data;
+
+      this.productos = this.datos;
+    },
+    Contar_productos() {
+      const { $data } = this.$nuxt;
+      this.datos = $data;
+
+      this.productos_totales = this.datos.length;
+      this.anillos_totales = this.datos.filter((item) => item.tipo === "anillos").length;
+      this.aretes_totales = this.datos.filter((item) => item.tipo === "aretes").length;
+      this.collares_totales = this.datos.filter((item) => item.tipo === "collares").length;
+      this.pulseras_totales = this.datos.filter((item) => item.tipo === "pulseras").length;
     }
+  },
+  created() {
+    this.Total_productos();
+    this.Contar_productos();
   },
   mounted() {
     window.addEventListener("scroll", this.handleScroll1);

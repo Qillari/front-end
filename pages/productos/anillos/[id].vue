@@ -15,7 +15,7 @@
       <div class="row">
         <div class="col-6 width1">
           <div class="padding">
-            <div class="alert" v-if="data.stock == 0">
+            <div class="alert" v-if="producto.stock == 0">
               <strong>¡Lo sentimos!</strong> Este producto está fuera de stock.
             </div>
             <h1 align="center">
@@ -29,18 +29,18 @@
               id="cantidad"
               name="cantidad"
               min="0"
-              :max="data.stock"
+              :max="producto.stock"
               aria-label="cantidad"
               v-model="producto.amount"
               style="margin-bottom: 6px"
-              :disabled="data.stock == 0"
+              :disabled="producto.stock == 0"
             />
             <div>
               <button
                 @click="añadir()"
                 style="margin-right: 2px"
                 class="button"
-                :disabled="data.stock == 0"
+                :disabled="producto.stock == 0"
               >
                 añadir al carrito
               </button>
@@ -75,69 +75,79 @@
 
 <script setup>
 const route = useRoute();
-const data = await axios.get(`https://backend-phi-gules.vercel.app/api/anillos/${route.params.id}`).then(response => response.data);
-useHead({
-  title: data.titulo,
-  meta: [
-    {
-      name: "robots",
-      content: "index, follow",
-    },
-    {
-      name: "description",
-      content: data.descripcion,
-    },
-    {
-      property: "site_name",
-      content: "Qillari | Joyería Peruana",
-    },
-    {
-      property: "og:title",
-      content: data.titulo,
-    },
-    {
-      property: "og:description",
-      content: data.descripcion,
-    },
-    {
-      property: "og:image",
-      content: data.fotos,
-    },
-    {
-      property: "og:url",
-      content: data.url,
-    },
-    {
-      name: "twitter:card",
-      content: "summary_large_image",
-    },
-    {
-      name: "twitter:tittle",
-      content: data.titulo,
-    },
-    {
-      name: "twitter:description",
-      content: data.descripcion,
-    },
-    {
-      name: "twitter:image",
-      content: data.url,
-    },
-  ],
-  link: [
-    {
-      rel: "canonical",
-      href: "https://qillari.com" + data.url,
-    },
-  ],
-});
+const nuxtApp = useNuxtApp();
+const datos1 = ref(null);
+const id = route.params.id;
+
+if (nuxtApp.$data) {
+  datos1.value = nuxtApp.$data;
+  const data = datos1.value.find((item) => item.nombre_link === id);
+
+  if (data) {
+    useHead({
+      title: data.titulo,
+      meta: [
+        {
+          name: "robots",
+          content: "index, follow",
+        },
+        {
+          name: "description",
+          content: data.descripcion,
+        },
+        {
+          property: "site_name",
+          content: "Qillari | Joyería Peruana",
+        },
+        {
+          property: "og:title",
+          content: data.titulo,
+        },
+        {
+          property: "og:description",
+          content: data.descripcion,
+        },
+        {
+          property: "og:image",
+          content: data.fotos[0]?.src1,
+        },
+        {
+          property: "og:url",
+          content: data.url,
+        },
+        {
+          name: "twitter:card",
+          content: "summary_large_image",
+        },
+        {
+          name: "twitter:title", // Corregido el error tipográfico
+          content: data.titulo,
+        },
+        {
+          name: "twitter:description",
+          content: data.descripcion,
+        },
+        {
+          name: "twitter:image",
+          content: data.url,
+        },
+      ],
+      link: [
+        {
+          rel: "canonical",
+          href: "https://qillari.com" + data.url,
+        },
+      ],
+    });
+  }
+}
 </script>
 
 <script>
-import axios from "axios";
 export default {
   data() {
     return {
+      dato: null,
       producto: {
         id: "",
         nombre: "",
@@ -145,10 +155,9 @@ export default {
         price: "",
         descuento: "",
         fotos: [],
-        amount: 1,
-        stock: "",
+        amount: 0,
+        stock: 0,
         selectedImage: "",
-        stock: null,
       },
       carrito: [],
       preciototal: 0,
@@ -188,16 +197,38 @@ export default {
     selectImage(image) {
       this.producto.selectedImage = image;
     },
-    async productos() {
-      const route = useRoute();
-      const response = await axios.get(`https://backend-phi-gules.vercel.app/api/anillos/${route.params.id}`);
-      this.producto.id = response.data.id;
-      this.producto.nombre = response.data.nombre;
-      this.producto.descripcion = response.data.descripcion;
-      this.producto.price = response.data.precio;
-      this.producto.descuento = response.data["precio-descuento"];
-      this.producto.fotos = response.data.fotos;
-      this.producto.stock = response.data.stock;
+    productos() {
+      const { $data } = this.$nuxt;
+      this.datos = $data;
+      const id = this.$route.params.id;
+      this.dato = this.datos.find((item) => item.nombre_link === id);
+
+      this.producto.id = this.dato.id;
+      this.producto.nombre = this.dato.titulo;
+      this.producto.descripcion = this.dato.descripcion;
+      this.producto.price = this.dato.precio;
+      this.producto.descuento = this.dato.precio_sin_descuento;
+
+      const nuevaFoto = {
+        src: this.dato.fotos[0].src1,
+        srcset: this.dato.fotos[0].srcset1,
+      };
+      this.producto.fotos.push(nuevaFoto);
+      if (this.dato.fotos[0].src2 && this.dato.fotos[0].src2 !== "") {
+        const nuevaFoto = {
+          src: this.dato.fotos[0].src2,
+          srcset: this.dato.fotos[0].srcset2,
+        };
+        this.dato.fotos.push(nuevaFoto);
+      }
+      if (this.dato.fotos[0].src3 && this.dato.fotos[0].src3 !== "") {
+        const nuevaFoto = {
+          src: this.dato.fotos[0].src3,
+          srcset: this.dato.fotos[0].srcset3,
+        };
+        this.producto.fotos.push(nuevaFoto);
+      }
+      this.producto.stock = this.dato.cantidad;
       this.producto.selectedImage = this.producto.fotos[0];
     },
   },
@@ -215,8 +246,10 @@ export default {
       deep: true,
     },
   },
-  mounted() {
+  created() {
     this.productos();
+  },
+  mounted() {
     this.carrito = JSON.parse(localStorage.getItem("carrito") || "[]");
     this.preciototal = JSON.parse(localStorage.getItem("precioTotal") || 0);
     this.$bus.$on("productoEliminado", (carrito) => {

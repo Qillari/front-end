@@ -137,28 +137,30 @@
           <div class="columns">
             <NuxtLink
               v-for="producto in productosFiltrados"
-              :key="producto.id"
+              :key="producto.producto_id"
               class="card"
-              :to="producto.link"
+              :to="producto.url"
             >
-              <picture>
-                <source
-                  :srcset="producto.srcset"
-                  class="imagen"
-                  style="width: 100%; height: 250px; object-fit: contain"
-                  :alt="producto.nombre"
-                  loading="lazy"
-                />
-                <img
-                  :src="producto.ima"
-                  style="width: 100%; height: 250px; object-fit: contain"
-                  :alt="producto.nombre"
-                  loading="lazy"
-                />
-              </picture>
+              <div v-for="fotoproducto in producto.fotos" :key="fotoproducto">
+                <picture>
+                  <source
+                    :srcset="fotoproducto.srcset1"
+                    class="imagen"
+                    style="width: 100%; height: 250px; object-fit: contain"
+                    :alt="producto.titulo"
+                    loading="lazy"
+                  />
+                  <img
+                    :src="fotoproducto.src1"
+                    style="width: 100%; height: 250px; object-fit: contain"
+                    :alt="producto.titulo"
+                    loading="lazy"
+                  />
+                </picture>
+              </div>
               <div class="container">
                 <br />
-                <h2 align="center" class="nomb">{{ producto.nombre }}</h2>
+                <h2 align="center" class="nomb">{{ producto.titulo }}</h2>
                 <div style="display: flex; justify-content: center">
                   <p
                     align="center"
@@ -168,7 +170,7 @@
                       margin: 0 10px;
                     "
                   >
-                    {{ producto.precio_descuento }}
+                    {{ producto.precio_sin_descuento }}
                   </p>
                   <p
                     align="center"
@@ -491,78 +493,7 @@ export default {
       currentPage: 1,
       itemsPerPage: 10,
       isFixed: false,
-      productos: [
-        {
-          id: "000007",
-          nombre: "Aretes Argollas tamaño L",
-          ima: "/productos-webp/aretes/argollas-tamaño-l/ima1-opcion2.webp",
-          srcset:
-            "/productos-webp/aretes/argollas-tamaño-l/ima1-cel-opcion2.webp 500w, /productos-webp/aretes/argollas-tamaño-l/ima1-opcion2.webp 1000w",
-          link: "/productos/aretes/argollas-tamano-l",
-          precio: 94,
-          precio_descuento: 112.9,
-        },
-        {
-          id: "000008",
-          nombre: "Aretes isabelle",
-          ima: "/productos-webp/aretes/isabelle.webp",
-          srcset:
-            "/productos-webp/aretes/isabelle-cel.webp 500w, /productos-webp/aretes/isabelle.webp 1000w",
-          link: "/productos/aretes/isabelle",
-          precio: 88,
-          precio_descuento: 105.9,
-        },
-        {
-          id: "000009",
-          nombre: "Aretes perlas",
-          ima: "/productos-webp/aretes/perlas.webp",
-          srcset:
-            "/productos-webp/aretes/perlas.webp 500w, /productos-webp/aretes/perlas.webp 1000w",
-          link: "/productos/aretes/perlas",
-          precio: 98,
-          precio_descuento: 117.9,
-        },
-        {
-          id: "000010",
-          nombre: "Aretes Punto de Luz",
-          ima: "/productos-webp/aretes/punto-de-luz.webp",
-          srcset:
-            "/productos-webp/aretes/punto-de-luz-cel.webp 500w, /productos-webp/aretes/punto-de-luz.webp 1000w",
-          link: "/productos/aretes/punto-de-luz",
-          precio: 78,
-          precio_descuento: 93.9,
-        },
-        {
-          id: "0000033",
-          nombre: "Aretes Nudillos",
-          ima: "",
-          srcset:
-            "",
-          link: "/productos/aretes/nudillos",
-          precio: 66,
-          precio_descuento: 79.2,
-        },
-        {
-          id: "0000034",
-          nombre: "Aretes entorchado S",
-          ima: "",
-          srcset:
-            "",
-          link: "/productos/aretes/entorchado",
-          precio: 68,
-          precio_descuento: 81.6,
-        },
-        {
-          id: "0000035",
-          nombre: "Aretes entorchado M",
-          ima: "",
-          srcset:
-            "",
-          link: "/productos/aretes/entorchado",
-          precio: 100,
-          precio_descuento: 120,
-        },
-      ],
+      productos: [],
     };
   },
   computed: {
@@ -590,7 +521,7 @@ export default {
     },
     filtro() {
       return this.productos.filter((producto) =>
-        producto.nombre
+        producto.titulo
           .toLowerCase()
           .normalize("NFD")
           .replace(/[\u0300-\u036f]/g, "")
@@ -638,7 +569,16 @@ export default {
     },
     validate() {
       this.buscar = this.buscar.replace(/[^a-zA-Z0-9]/g, '');
-    }
+    },
+    Productos_aretes() {
+    const { $data } = this.$nuxt;
+    this.datos = $data;
+
+    this.productos = this.datos.filter((item) => item.tipo === "aretes");
+  }
+  },
+  created() {
+    this.Productos_aretes();
   },
   mounted() {
     window.addEventListener("scroll", this.handleScroll1);

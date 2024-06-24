@@ -1,7 +1,7 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   devtools: { enabled: true },
-  modules: ["nuxt-simple-robots", "@nuxtjs/sitemap", "nuxt-schema-org"],
+  modules: ["nuxt-simple-robots", "@nuxtjs/sitemap", "nuxt-schema-org", 'nuxt-highcharts'],
   vue: {
     compilerOptions: {
       isCustomElement: tag => tag.includes('swiper-'),

@@ -13,51 +13,51 @@
     </div>
     <div class="row display">
       <div class="col-12 display">
-          <div class="container display">
-            <br />
+        <div class="container display">
+          <br />
+          <input
+            class="input1"
+            type="text"
+            v-model="buscar"
+            placeholder="Buscar"
+            @input="validate()"
+          />
+          <br />
+          <br />
+          <div class="filtro-precios">
+            <label for="precioMin">Precio mínimo:</label>
             <input
-              class="input1"
-              type="text"
-              v-model="buscar"
-              placeholder="Buscar"
-              @input="validate()"
+              type="range"
+              id="precioMin"
+              v-model="precioMin"
+              :min="precioMinRange"
+              :max="precioMaxRange"
+              @input="aplicarFiltroPrecio"
             />
+            <span> S/. {{ precioMin }}</span>
             <br />
-            <br />
-            <div class="filtro-precios">
-              <label for="precioMin">Precio mínimo:</label>
-              <input
-                type="range"
-                id="precioMin"
-                v-model="precioMin"
-                :min="precioMinRange"
-                :max="precioMaxRange"
-                @input="aplicarFiltroPrecio"
-              />
-              <span> S/. {{ precioMin }}</span>
-              <br />
-              <label for="precioMax">Precio máximo:</label>
-              <input
-                type="range"
-                id="precioMax"
-                v-model="precioMax"
-                :min="precioMinRange"
-                :max="precioMaxRange"
-                @input="aplicarFiltroPrecio"
-              />
-              <span> S/. {{ precioMax }}</span>
-            </div>
-            <br />
-            <button @click="ordenarPorPrecioMax" class="button-precio">
-              ver de mayor a menor precio
-            </button>
-            <br />
-            <br />
-            <button @click="ordenarPorPrecioMin" class="button-precio">
-              ver de menor a mayor precio
-            </button>
-            <br />
+            <label for="precioMax">Precio máximo:</label>
+            <input
+              type="range"
+              id="precioMax"
+              v-model="precioMax"
+              :min="precioMinRange"
+              :max="precioMaxRange"
+              @input="aplicarFiltroPrecio"
+            />
+            <span> S/. {{ precioMax }}</span>
           </div>
+          <br />
+          <button @click="ordenarPorPrecioMax" class="button-precio">
+            ver de mayor a menor precio
+          </button>
+          <br />
+          <br />
+          <button @click="ordenarPorPrecioMin" class="button-precio">
+            ver de menor a mayor precio
+          </button>
+          <br />
+        </div>
       </div>
     </div>
     <div class="row">
@@ -108,15 +108,15 @@
               ver de menor a mayor precio
             </button>
             <br />
-            <NuxtLink to="/productos" class="link"> 
-              Productos ({{ productos_totales }}) 
+            <NuxtLink to="/productos" class="link">
+              Productos ({{ productos_totales }})
             </NuxtLink>
             <br />
             <NuxtLink to="/productos/anillos" class="link">
               Anillos ({{ anillos_totales }})
             </NuxtLink>
             <br />
-            <NuxtLink to="/productos/aretes" class="link"> 
+            <NuxtLink to="/productos/aretes" class="link">
               Aretes ({{ aretes_totales }})
             </NuxtLink>
             <br />
@@ -136,31 +136,47 @@
           <div class="columns">
             <NuxtLink
               v-for="producto in productosFiltrados"
-              :key="producto.id"
+              :key="producto.producto_id"
               class="card"
-              :to="producto.link"
+              :to="producto.url"
             >
-              <picture>
-                <source
-                  :srcset="producto.srcset"
-                  class="imagen"
-                  style="width: 100%; height: 250px; object-fit: contain"
-                  :alt="producto.nombre"
-                  loading="lazy"
-                />
-                <img
-                  :src="producto.ima"
-                  style="width: 100%; height: 250px; object-fit: contain"
-                  :alt="producto.nombre"
-                  loading="lazy"
-                />
-              </picture>
+              <div v-for="fotoproducto in producto.fotos" :key="fotoproducto">
+                <picture>
+                  <source
+                    :srcset="fotoproducto.srcset1"
+                    class="imagen"
+                    style="width: 100%; height: 250px; object-fit: contain"
+                    :alt="producto.titulo"
+                    loading="lazy"
+                  />
+                  <img
+                    :src="fotoproducto.src1"
+                    style="width: 100%; height: 250px; object-fit: contain"
+                    :alt="producto.titulo"
+                    loading="lazy"
+                  />
+                </picture>
+              </div>
               <div class="container">
                 <br />
-                <h2 align="center" class="nomb">{{ producto.nombre }}</h2>
-                <div style="display: flex; justify-content: center;">
-                  <p align="center" style="color: grey; text-decoration: line-through; margin: 0 10px;">{{ producto.precio_descuento }}</p>
-                  <p align="center" style="color: black; font-size: 35px; margin: 0">S/. {{ producto.precio }}</p>
+                <h2 align="center" class="nomb">{{ producto.titulo }}</h2>
+                <div style="display: flex; justify-content: center">
+                  <p
+                    align="center"
+                    style="
+                      color: grey;
+                      text-decoration: line-through;
+                      margin: 0 10px;
+                    "
+                  >
+                    {{ producto.precio_sin_descuento }}
+                  </p>
+                  <p
+                    align="center"
+                    style="color: black; font-size: 35px; margin: 0"
+                  >
+                    S/. {{ producto.precio }}
+                  </p>
                 </div>
                 <br />
               </div>
@@ -207,7 +223,8 @@
     grid-template-columns: repeat(1, minmax(0, 1fr));
     column-gap: 20px;
   }
-  .col-3, .fixed {
+  .col-3,
+  .fixed {
     width: 35%;
   }
   .col-9 {
@@ -223,7 +240,8 @@
     grid-template-columns: repeat(2, minmax(0, 1fr));
     column-gap: 20px;
   }
-  .col-3, .fixed {
+  .col-3,
+  .fixed {
     width: 25%;
   }
   .col-9 {
@@ -239,7 +257,8 @@
     grid-template-columns: repeat(3, minmax(0, 1fr));
     column-gap: 20px;
   }
-  .col-3, .fixed {
+  .col-3,
+  .fixed {
     width: 25%;
   }
   .col-9 {
@@ -293,7 +312,7 @@ input[type="range"] {
   height: 10px;
   border-radius: 5px;
   outline: none;
-  border: 1px solid rgb(177, 177, 177)
+  border: 1px solid rgb(177, 177, 177);
 }
 input[type="range"]::-webkit-slider-thumb {
   -webkit-appearance: none;
@@ -473,68 +492,7 @@ export default {
       currentPage: 1,
       itemsPerPage: 10,
       isFixed: false,
-      productos: [
-        {
-          id: "000001",
-          nombre: "Anillo Aurora",
-          ima: "/productos-webp/anillos/aurora.webp",
-          srcset:
-            "/productos-webp/anillos/aurora.webp 500w, /productos-webp/anillos/aurora.webp 1000w",
-          link: "/productos/anillos/aurora",
-          precio: 55,
-          precio_descuento: 66,
-        },
-        {
-          id: "000002",
-          nombre: "Anillo Entorchado Doble",
-          ima: "/productos-webp/anillos/entorchado-doble.webp",
-          srcset:
-            "/productos-webp/anillos/entorchado-doble-cel.webp 500w, /productos-webp/anillos/entorchado-doble.webp 1000w",
-          link: "/productos/anillos/entorchado-doble",
-          precio: 55,
-          precio_descuento: 66,
-        },
-        {
-          id: "000003",
-          nombre: "Anillo Entorchado",
-          ima: "/productos-webp/anillos/entorchado/ima1.webp",
-          srcset:
-            "/productos-webp/anillos/entorchado/ima1-cel.webp 500w, /productos-webp/anillos/entorchado/ima1.webp 1000w",
-          link: "/productos/anillos/entorchado",
-          precio: 55,
-          precio_descuento: 66,
-        },
-        {
-          id: "000004",
-          nombre: "Anillo Gaviota",
-          ima: "/productos-webp/anillos/gaviota/ima1.webp",
-          srcset:
-            "/productos-webp/anillos/gaviota/ima1-cel.webp 500w, /productos-webp/anillos/gaviota/ima1.webp 1000w",
-          link: "/productos/anillos/gaviota",
-          precio: 55,
-          precio_descuento: 66,
-        },
-        {
-          id: "000005",
-          nombre: "Anillo Ola",
-          ima: "/productos-webp/anillos/ola/ima1.webp",
-          srcset:
-            "/productos-webp/anillos/ola/ima1.webp 500w, /productos-webp/anillos/ola/ima1.webp 1000w",
-          link: "/productos/anillos/ola",
-          precio: 55,
-          precio_descuento: 66,
-        },
-        {
-          id: "000006",
-          nombre: "Anillo Punto de Luz",
-          ima: "/productos-webp/anillos/punto-de-luz.webp",
-          srcset:
-            "/productos-webp/anillos/punto-de-luz-cel.webp 500w, /productos-webp/anillos/punto-de-luz.webp 1000w",
-          link: "/productos/anillos/punto-de-luz",
-          precio: 55,
-          precio_descuento: 66,
-        },
-      ],
+      productos: [],
     };
   },
   computed: {
@@ -562,7 +520,7 @@ export default {
     },
     filtro() {
       return this.productos.filter((producto) =>
-        producto.nombre
+        producto.titulo
           .toLowerCase()
           .normalize("NFD")
           .replace(/[\u0300-\u036f]/g, "")
@@ -609,8 +567,17 @@ export default {
       this.currentPage = 1;
     },
     validate() {
-      this.buscar = this.buscar.replace(/[^a-zA-Z0-9]/g, '');
-    }
+      this.buscar = this.buscar.replace(/[^a-zA-Z0-9]/g, "");
+    },
+    Productos_anillos() {
+      const { $data } = this.$nuxt;
+      this.datos = $data;
+
+      this.productos = this.datos.filter((item) => item.tipo === "anillos");
+    },
+  },
+  created() {
+    this.Productos_anillos();
   },
   mounted() {
     window.addEventListener("scroll", this.handleScroll1);

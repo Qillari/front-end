@@ -110,15 +110,15 @@
             </button>
             <br />
             <br />
-            <NuxtLink to="/productos" class="link"> 
-              Productos ({{ productos_totales }}) 
+            <NuxtLink to="/productos" class="link">
+              Productos ({{ productos_totales }})
             </NuxtLink>
             <br />
             <NuxtLink to="/productos/anillos" class="link">
               Anillos ({{ anillos_totales }})
             </NuxtLink>
             <br />
-            <NuxtLink to="/productos/aretes" class="link"> 
+            <NuxtLink to="/productos/aretes" class="link">
               Aretes ({{ aretes_totales }})
             </NuxtLink>
             <br />
@@ -138,31 +138,47 @@
           <div class="columns">
             <NuxtLink
               v-for="producto in productosFiltrados"
-              :key="producto.id"
+              :key="producto.producto_id"
               class="card"
-              :to="producto.link"
+              :to="producto.url"
             >
-              <picture>
-                <source
-                  :srcset="producto.srcset"
-                  class="imagen"
-                  style="width: 100%; height: 250px; object-fit: contain"
-                  :alt="producto.nombre"
-                  loading="lazy"
-                />
-                <img
-                  :src="producto.ima"
-                  style="width: 100%; height: 250px; object-fit: contain"
-                  :alt="producto.nombre"
-                  loading="lazy"
-                />
-              </picture>
+              <div v-for="fotoproducto in producto.fotos" :key="fotoproducto">
+                <picture>
+                  <source
+                    :srcset="fotoproducto.srcset1"
+                    class="imagen"
+                    style="width: 100%; height: 250px; object-fit: contain"
+                    :alt="producto.titulo"
+                    loading="lazy"
+                  />
+                  <img
+                    :src="fotoproducto.src1"
+                    style="width: 100%; height: 250px; object-fit: contain"
+                    :alt="producto.titulo"
+                    loading="lazy"
+                  />
+                </picture>
+              </div>
               <div class="container">
                 <br />
-                <h2 align="center" class="nomb">{{ producto.nombre }}</h2>
-                <div style="display: flex; justify-content: center;">
-                  <p align="center" style="color: grey; text-decoration: line-through; margin: 0 10px;">{{ producto.precio_descuento }}</p>
-                  <p align="center" style="color: black; font-size: 35px; margin: 0">S/.{{ producto.precio }}</p>
+                <h2 align="center" class="nomb">{{ producto.titulo }}</h2>
+                <div style="display: flex; justify-content: center">
+                  <p
+                    align="center"
+                    style="
+                      color: grey;
+                      text-decoration: line-through;
+                      margin: 0 10px;
+                    "
+                  >
+                    {{ producto.precio_sin_descuento }}
+                  </p>
+                  <p
+                    align="center"
+                    style="color: black; font-size: 35px; margin: 0"
+                  >
+                    S/.{{ producto.precio }}
+                  </p>
                 </div>
                 <br />
               </div>
@@ -478,78 +494,7 @@ export default {
       currentPage: 1,
       itemsPerPage: 10,
       isFixed: false,
-      productos: [
-        {
-          id: "0000024",
-          nombre: "Pulsera Arbol De La Vida Regulable",
-          ima: "/productos-webp/pulseras/regulable-arbol-de-la-vida/ima1.webp",
-          srcset:
-            "/productos-webp/pulseras/regulable-arbol-de-la-vida/ima1-cel.webp 500w, /productos-webp/pulseras/regulable-arbol-de-la-vida/ima1.webp 1000w",
-          link: "/productos/pulseras/arbol-de-la-vida-regulable",
-          precio: 110,
-          precio_descuento: 137.9
-        },
-        {
-          id: "0000020",
-          nombre: "Pulsera Aris",
-          ima: "/productos-webp/pulseras/aris.webp",
-          srcset:
-            "/productos-webp/pulseras/aris-cel.webp 500w, /productos-webp/pulseras/aris.webp 1000w",
-          link: "/productos/pulseras/aris",
-          precio: 110,
-          precio_descuento: 137.9
-        },
-        {
-          id: "0000021",
-          nombre: "Pulsera Atenea",
-          ima: "/productos-webp/pulseras/atenea.webp",
-          srcset:
-            "/productos-webp/pulseras/atenea-cel.webp 500w, /productos-webp/pulseras/atenea.webp 1000w",
-          link: "/productos/pulseras/atenea",
-          precio: 110,
-          precio_descuento: 137.9
-        },
-        {
-          id: "0000022",
-          nombre: "Pulsera Nudillo Perlas",
-          ima: "/productos-webp/pulseras/nudillo-perlas.webp",
-          srcset:
-            "/productos-webp/pulseras/nudillo-perlas-cel.webp 500w, /productos-webp/pulseras/nudillo-perlas.webp 1000w",
-          link: "/productos/pulseras/nudillo-perlas",
-          precio: 118,
-          precio_descuento: 147.9
-        },
-        {
-          id: "0000023",
-          nombre: "Pulsera Perlas Sofia",
-          ima: "/productos-webp/pulseras/perlas-sofia.webp",
-          srcset:
-            "/productos-webp/pulseras/perlas-sofia-cel.webp 500w, /productos-webp/pulseras/perlas-sofia.webp 1000w",
-          link: "/productos/pulseras/perlas-sofia",
-          precio: 108,
-          precio_descuento: 135
-        },
-        {
-          id: "0000025",
-          nombre: "Pulsera Saturno",
-          ima: "/productos/pulseras/saturno/ima1.webp",
-          srcset:
-            "/productos-webp/pulseras/saturno/ima1-cel.webp 500w, /productos-webp/pulseras/saturno/ima1-cel.webp 1000w",
-          link: "/productos/pulseras/saturno",
-          precio: 100,
-          precio_descuento: 125
-        },
-        {
-          id: "0000031",
-          nombre: "Pulsera corazón fino regulable",
-          ima: "",
-          srcset:
-            "",
-          link: "/productos/pulseras/corazon-fino-regulable",
-          precio: 100,
-          precio_descuento: 125
-        },
-      ],
+      productos: [],
     };
   },
   computed: {
@@ -577,7 +522,7 @@ export default {
     },
     filtro() {
       return this.productos.filter((producto) =>
-        producto.nombre
+        producto.titulo
           .toLowerCase()
           .normalize("NFD")
           .replace(/[\u0300-\u036f]/g, "")
@@ -624,8 +569,17 @@ export default {
       this.currentPage = 1;
     },
     validate() {
-      this.buscar = this.buscar.replace(/[^a-zA-Z0-9]/g, '');
-    }
+      this.buscar = this.buscar.replace(/[^a-zA-Z0-9]/g, "");
+    },
+    Productos_collares() {
+      const { $data } = this.$nuxt;
+      this.datos = $data;
+
+      this.productos = this.datos.filter((item) => item.tipo === "collares");
+    },
+  },
+  created() {
+    this.Productos_collares();
   },
   mounted() {
     window.addEventListener("scroll", this.handleScroll1);

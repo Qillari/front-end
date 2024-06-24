@@ -13,52 +13,52 @@
     </div>
     <div class="row display">
       <div class="col-12 display">
-          <div class="container display">
-            <br />
+        <div class="container display">
+          <br />
+          <input
+            class="input1"
+            type="text"
+            v-model="buscar"
+            placeholder="Buscar"
+            @input="validate()"
+          />
+          <br />
+          <br />
+          <div class="filtro-precios">
+            <label for="precioMin">Precio mínimo:</label>
             <input
-              class="input1"
-              type="text"
-              v-model="buscar"
-              placeholder="Buscar"
-              @input="validate()"
+              type="range"
+              id="precioMin"
+              v-model="precioMin"
+              :min="precioMinRange"
+              :max="precioMaxRange"
+              @input="aplicarFiltroPrecio"
             />
+            <span> S/. {{ precioMin }}</span>
             <br />
-            <br />
-            <div class="filtro-precios">
-              <label for="precioMin">Precio mínimo:</label>
-              <input
-                type="range"
-                id="precioMin"
-                v-model="precioMin"
-                :min="precioMinRange"
-                :max="precioMaxRange"
-                @input="aplicarFiltroPrecio"
-              />
-              <span> S/. {{ precioMin }}</span>
-              <br />
-              <label for="precioMax">Precio máximo:</label>
-              <input
-                type="range"
-                id="precioMax"
-                v-model="precioMax"
-                :min="precioMinRange"
-                :max="precioMaxRange"
-                @input="aplicarFiltroPrecio"
-              />
-              <span> S/. {{ precioMax }}</span>
-            </div>
-            <br />
-            <button @click="ordenarPorPrecioMax" class="button-precio">
-              ver de mayor a menor precio
-            </button>
-            <br />
-            <br />
-            <button @click="ordenarPorPrecioMin" class="button-precio">
-              ver de menor a mayor precio
-            </button>
-            <br />
-            <br />
+            <label for="precioMax">Precio máximo:</label>
+            <input
+              type="range"
+              id="precioMax"
+              v-model="precioMax"
+              :min="precioMinRange"
+              :max="precioMaxRange"
+              @input="aplicarFiltroPrecio"
+            />
+            <span> S/. {{ precioMax }}</span>
           </div>
+          <br />
+          <button @click="ordenarPorPrecioMax" class="button-precio">
+            ver de mayor a menor precio
+          </button>
+          <br />
+          <br />
+          <button @click="ordenarPorPrecioMin" class="button-precio">
+            ver de menor a mayor precio
+          </button>
+          <br />
+          <br />
+        </div>
       </div>
     </div>
     <div class="row">
@@ -110,15 +110,15 @@
             </button>
             <br />
             <br />
-            <NuxtLink to="/productos" class="link"> 
-              Productos ({{ productos_totales }}) 
+            <NuxtLink to="/productos" class="link">
+              Productos ({{ productos_totales }})
             </NuxtLink>
             <br />
             <NuxtLink to="/productos/anillos" class="link">
               Anillos ({{ anillos_totales }})
             </NuxtLink>
             <br />
-            <NuxtLink to="/productos/aretes" class="link"> 
+            <NuxtLink to="/productos/aretes" class="link">
               Aretes ({{ aretes_totales }})
             </NuxtLink>
             <br />
@@ -138,24 +138,47 @@
           <div class="columns">
             <NuxtLink
               v-for="producto in productosFiltrados"
-              :key="producto.id"
+              :key="producto.producto_id"
               class="card"
-              :to="producto.link"
+              :to="producto.url"
             >
-              <picture>
-                <img
-                  :srcset="producto.srcset"
-                  style="width: 100%; height: 250px; object-fit: contain"
-                  :alt="producto.nombre"
-                  loading="lazy"
-                />
-              </picture>
+              <div v-for="fotoproducto in producto.fotos" :key="fotoproducto">
+                <picture>
+                  <source
+                    :srcset="fotoproducto.srcset1"
+                    class="imagen"
+                    style="width: 100%; height: 250px; object-fit: contain"
+                    :alt="producto.titulo"
+                    loading="lazy"
+                  />
+                  <img
+                    :src="fotoproducto.src1"
+                    style="width: 100%; height: 250px; object-fit: contain"
+                    :alt="producto.titulo"
+                    loading="lazy"
+                  />
+                </picture>
+              </div>
               <div class="container">
                 <br />
-                <h2 align="center" class="nomb">{{ producto.nombre }}</h2>
-                <div style="display: flex; justify-content: center;">
-                  <p align="center" style="color: grey; text-decoration: line-through; margin: 0 10px;">{{ producto.precio_descuento }}</p>
-                  <p align="center" style="color: black; font-size: 35px; margin: 0">S/. {{ producto.precio }}</p>
+                <h2 align="center" class="nomb">{{ producto.titulo }}</h2>
+                <div style="display: flex; justify-content: center">
+                  <p
+                    align="center"
+                    style="
+                      color: grey;
+                      text-decoration: line-through;
+                      margin: 0 10px;
+                    "
+                  >
+                    {{ producto.precio_sin_descuento }}
+                  </p>
+                  <p
+                    align="center"
+                    style="color: black; font-size: 35px; margin: 0"
+                  >
+                    S/. {{ producto.precio }}
+                  </p>
                 </div>
                 <br />
               </div>
@@ -202,7 +225,8 @@
     grid-template-columns: repeat(1, minmax(0, 1fr));
     column-gap: 20px;
   }
-  .col-3, .fixed {
+  .col-3,
+  .fixed {
     width: 35%;
   }
   .col-9 {
@@ -218,7 +242,8 @@
     grid-template-columns: repeat(2, minmax(0, 1fr));
     column-gap: 20px;
   }
-  .col-3, .fixed {
+  .col-3,
+  .fixed {
     width: 25%;
   }
   .col-9 {
@@ -234,7 +259,8 @@
     grid-template-columns: repeat(3, minmax(0, 1fr));
     column-gap: 20px;
   }
-  .col-3, .fixed {
+  .col-3,
+  .fixed {
     width: 25%;
   }
   .col-9 {
@@ -288,7 +314,7 @@ input[type="range"] {
   height: 10px;
   border-radius: 5px;
   outline: none;
-  border: 1px solid rgb(177, 177, 177)
+  border: 1px solid rgb(177, 177, 177);
 }
 input[type="range"]::-webkit-slider-thumb {
   -webkit-appearance: none;
@@ -468,95 +494,7 @@ export default {
       currentPage: 1,
       itemsPerPage: 10,
       isFixed: false,
-      productos: [
-        {
-          id: "0000012",
-          nombre: "Collar Cristal",
-          ima: "/productos-webp/collares/cristal/ima1.webp",
-          srcset:
-            "/productos-webp/collares/cristal/ima1-cel.webp 500w, /productos-webp/collares/cristal/ima1.webp 1000w",
-          link: "/productos/collares/cristal",
-          precio: 120,
-          precio_descuento: 150
-        },
-        {
-          id: "0000013",
-          nombre: "Collar Doble Estrella y Saturno",
-          ima: "/productos-webp/collares/doble-estrella-y-saturno/ima1.webp",
-          srcset:
-            "/productos-webp/collares/doble-estrella-y-saturno/ima1-cel.webp 500w, /productos-webp/collares/doble-estrella-y-saturno/ima1.webp 1000w",
-          link: "/productos/collares/doble-estrella-y-saturno",
-          precio: 125,
-          precio_descuento: 156.9
-        },
-        {
-          id: "0000014",
-          nombre: "Collar Flor y Perla",
-          ima: "/productos-webp/collares/flor-y-perla/ima1.webp",
-          srcset:
-            "/productos-webp/collares/flor-y-perla/ima1-cel.webp 500w, /productos-webp/collares/flor-y-perla/ima1.webp 1000w",
-          link: "/productos/collares/flor-y-perla",
-          precio: 120,
-          precio_descuento: 150
-        },
-        {
-          id: "0000015",
-          nombre: "Collar con Letra",
-          ima: "/productos/collares/letra/ima1.webp",
-          srcset:
-            "/productos-webp/collares/letra/ima1-cel.webp 500w, /productos-webp/collares/letra/ima1.webp 1000w",
-          link: "/productos/collares/letra",
-          precio: 105,
-          precio_descuento: 131.9
-        },
-        {
-          id: "0000017",
-          nombre: "Collar Rosa",
-          ima: "/productos-webp/collares/rosa/ima1.webp",
-          srcset:
-            "/productos-webp/collares/rosa/ima1-cel.webp 500w, /productos-webp/collares/rosa/ima1.webp 1000w",
-          link: "/productos/collares/rosa",
-          precio: 101,
-          precio_descuento: 126.9
-        },
-        {
-          id: "0000018",
-          nombre: "Collar Sol Brillante",
-          ima: "/productos-webp/collares/sol-brillante.webp",
-          srcset:
-            "/productos-webp/collares/sol-brillante-cel.webp 500w, /productos-webp/collares/sol-brillante.webp 1000w",
-          link: "/productos/collares/sol-brillante",
-          precio: 115,
-          precio_descuento: 143.9
-        },
-        {
-          id: "0000016",
-          nombre: "Collar de Ojo Turco",
-          ima: "",
-          srcset: "",
-          link: "productos/collares/ojo-turco",
-          precio_descuento: 125,
-          precio: 100,
-        },
-        {
-          id: "0000032",
-          nombre: "Collar de Ola",
-          ima: "",
-          srcset: "",
-          link: "productos/collares/ola",
-          precio_descuento: 143.75,
-          precio: 115,
-        },
-        {
-          id: "0000030",
-          nombre: "Collar Punto de Luz",
-          ima: "",
-          srcset: "",
-          link: "/productos/collares/punto-de-luz",
-          precio_descuento: 132.5,
-          precio: 106,
-        },
-      ],
+      productos: [],
     };
   },
   computed: {
@@ -584,7 +522,7 @@ export default {
     },
     filtro() {
       return this.productos.filter((producto) =>
-        producto.nombre
+        producto.titulo
           .toLowerCase()
           .normalize("NFD")
           .replace(/[\u0300-\u036f]/g, "")
@@ -631,8 +569,17 @@ export default {
       this.currentPage = 1;
     },
     validate() {
-      this.buscar = this.buscar.replace(/[^a-zA-Z0-9]/g, '');
-    }
+      this.buscar = this.buscar.replace(/[^a-zA-Z0-9]/g, "");
+    },
+    Productos_collares() {
+      const { $data } = this.$nuxt;
+      this.datos = $data;
+
+      this.productos = this.datos.filter((item) => item.tipo === "collares");
+    },
+  },
+  created() {
+    this.Productos_collares();
   },
   mounted() {
     window.addEventListener("scroll", this.handleScroll1);
