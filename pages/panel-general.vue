@@ -71,6 +71,13 @@
         <br />
     </div>
 </template>
+
+<script setup>
+definePageMeta({
+    middleware:["auth"]
+})
+</script>
+
 <script>
 import axios from "axios";
 export default {
