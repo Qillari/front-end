@@ -31,28 +31,31 @@ export default {
     },
     methods: {
     async log1() {
-      let result = await axios
-        .post("https://backend-phi-gules.vercel.app/login", {
+      try {
+        let result = await axios.post("https://backend-phi-gules.vercel.app/login", {
           username: this.username,
           password: this.password,
-        })
-        .catch((error) => {
-          console.log(error);
-          this.alert = true;
-          setTimeout(() => {
-            this.alert = false;
-          }, 5000);
-          this.username = "";
-          this.password = "";
         });
-      if (result.success == true) {
-        this.username = "";
-        this.password = "";
-        this.state = true;
-        localStorage.setItem("token", result.token);
-        return navigateTo("/panel-general");
+        
+        if (result.data.success) {
+          this.username = ""
+          this.password = ""
+          this.state = true
+          localStorage.setItem("token", result.data.token)
+          this.$router.push("/panel-general")
+        }
+      } 
+      catch (error) {
+        console.log(error)
+        this.alert = true
+        setTimeout(() => {
+          this.alert = false
+        }, 5000)
+        this.username = ""
+        this.password = ""
       }
-    },
+    }
+  }
   },
 }
 </script>
