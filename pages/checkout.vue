@@ -546,6 +546,7 @@ export default {
                   },
                 })
                 .then((response) => {
+                  console.log("hola");
                   if (response.data.status == "approved") {
                     axios
                       .post("https://backend-phi-gules.vercel.app/correo", {
