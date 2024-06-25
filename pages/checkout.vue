@@ -412,7 +412,7 @@ export default {
       let variable = localStorage.getItem("mercadopago1");
       await loadMercadoPago();
       const mp = new window.MercadoPago(
-        "APP_USR-ec623ccc-56bb-4aac-92c0-5eb08f2aa0b7"
+        "TEST-39ec44cc-a65c-48be-beb2-0c2c9d892956"
       );
       if (!cardForm) {
         cardForm = mp.cardForm({
