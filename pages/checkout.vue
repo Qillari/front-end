@@ -1,10 +1,10 @@
 <template>
   <div>
-    <div class="alert alert-error" role="alert" v-if="error">
+    <div class="alert-fixed" role="alert" v-if="error">
       Hubo un error
       <div class="progress-bar"></div>
     </div>
-    <div class="alert alert-error" role="alert" v-if="rechazado">
+    <div class="alert-fixed" role="alert" v-if="rechazado">
       Se rechazo el pago
       <div class="progress-bar"></div>
     </div>
@@ -288,7 +288,7 @@
     width: 100%;
   }
   .alert-fixed {
-    width: 100%;
+    min-width: 87%;
     right: 0;
   }
 }
@@ -402,7 +402,7 @@ button {
   right: 20px;
   width: 30%;
   height: 40px;
-  z-index: 100000000000;
+  z-index: 1000;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -420,7 +420,7 @@ button {
   left: 0;
   height: 5px;
   width: 100%;
-  background-color: #4caf50; /* Verde para la barra de progreso */
+  background-color: #9b1b12; /* Verde para la barra de progreso */
   animation: progress 5s linear forwards;
 }
 
@@ -546,7 +546,6 @@ export default {
                   },
                 })
                 .then((response) => {
-                  console.log("hola1");
                   if (response.data.status == "approved") {
                     axios
                       .post("https://backend-phi-gules.vercel.app/correo", {
