@@ -5,7 +5,6 @@
         slides-per-view="1"
         speed="500"
         autoplay-delay="2500"
-        pagination="true"
         pagination-clickable="true"
       >
         <swiper-slide>
