@@ -610,7 +610,7 @@ export default {
                   },
                 })
                 .then((response) => {
-                  console.log(response);
+                  console.log(response.status);
                   axios
                     .post("https://backend-phi-gules.vercel.app/correo", {
                       carrito: this.carrito,
