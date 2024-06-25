@@ -29,7 +29,7 @@ export default {
             alert: false,
         };
     },
-    methods: {
+  methods: {
     async log1() {
       try {
         let result = await axios.post("https://backend-phi-gules.vercel.app/login", {
@@ -44,8 +44,7 @@ export default {
           localStorage.setItem("token", result.data.token)
           this.$router.push("/panel-general")
         }
-      } 
-      catch (error) {
+      } catch (error) {
         console.log(error)
         this.alert = true
         setTimeout(() => {
@@ -55,7 +54,6 @@ export default {
         this.password = ""
       }
     }
-  }
   },
 }
 </script>
