@@ -45,12 +45,11 @@ export default {
           this.username = "";
           this.password = "";
         });
-      if (result.data.success == true) {
+      if (result.success == true) {
         this.username = "";
         this.password = "";
         this.state = true;
-        this.$bus.$emit("activador", this.state);
-        localStorage.setItem("token", result.data.token);
+        localStorage.setItem("token", result.token);
         return navigateTo("/panel-general");
       }
     },

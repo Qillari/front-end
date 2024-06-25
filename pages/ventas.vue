@@ -109,7 +109,7 @@ export default {
                 estado: "",
                 total: "",
             },
-            eliminar_ventas_id: ""
+            eliminar_ventas_id: "",
             fecha: ""
         };
     },
@@ -145,7 +145,7 @@ export default {
             try {
                 axios.delete("https://backend-phi-gules.vercel.app/crud-ventas", {
                     params: {
-                        id: this.eliminar_ventas_id
+                        id: this.eliminar_ventas_id,
                         fecha: this.fecha
                     }
                 });
