@@ -8,9 +8,6 @@
         <button @click="agregar_true()">
             Agregar producto
         </button>
-        <button @click="editar_true()">
-            Editar producto
-        </button>
         <button @click="eliminar_true()">
             Eliminar producto
         </button>
@@ -32,23 +29,6 @@
                 confirmar
             </button>
         </div>
-        <div v-if="boton_editar">
-            <input type="text" placeholder="Id" v-model="editar_ventas.id" />
-            <br />
-            <input type="text" placeholder="Id Stock" v-model="editar_ventas.id_stock" />
-            <br />
-            <input type="text" placeholder="Fecha/Hora" v-model="editar_ventas.fecha_hora"  />
-            <br />
-            <input type="text" placeholder="Estado" v-model="editar_ventas.estado" />
-            <br />
-            <input type="number" placeholder="Cantidad" v-model="editar_ventas.cantidad" />
-            <br />
-            <input type="text" placeholder="Total" v-model="editar_ventas.total" />
-            <br />
-            <button @click="Editar_ventas()">
-                confirmar
-            </button>
-        </div>
         <div v-if="boton_eliminar">
             <input type="text" placeholder="ID" v-model="eliminar_ventas_id" />
             <button @click="Eliminar_ventas()">
@@ -61,25 +41,19 @@
                 <thead>
                     <tr>
                         <th>ID</th>
-                        <th>ID_STOCK</th>
                         <th>FECHA_HORA</th>
+                        <th>PRODUCTOS</th>
                         <th>ESTADO</th>
-                        <th>CANTIDAD</th>
                         <th>TOTAL</th>
-                        <th>ACCIONES</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr v-for="item in datos_totales" :key="item.id" align="center">
                         <td>{{ item.id }}</td>
-                        <td>{{ item.id_stock }}</td>
                         <td>{{ item.fecha_hora }}</td>
+                        <td>{{ item.productos }}</td>
                         <td>{{ item.estado }}</td>
-                        <td>{{ item.cantidad }}</td>
                         <td>{{ item.total }}</td>
-                        <td>
-                            <button class="btn btn-primary" @click="editar_ventas_input(item)">Editar</button>
-                        </td>
                     </tr>
                 </tbody>
             </table>
@@ -120,25 +94,23 @@ export default {
             datos_totales: [],
             cantidad: 0,
             boton_agregar: false,
-            boton_editar: false,
             boton_eliminar: false,
             agregar_ventas: {
                 id: "",
-                id_stock: "",
                 fecha_hora: "",
+                productos: "",
                 estado: "",
-                cantidad: "",
                 total: "",
             },
             editar_ventas: {
                 id: "",
-                id_stock: "",
                 fecha_hora: "",
+                productos: "",
                 estado: "",
-                cantidad: "",
                 total: "",
             },
             eliminar_ventas_id: ""
+            fecha: ""
         };
     },
     methods: {
@@ -158,26 +130,9 @@ export default {
             try {
                 axios.post("https://backend-phi-gules.vercel.app/crud-ventas", {
                     id: this.agregar_ventas.id,
-                    id_stock: this.agregar_ventas.id_stock,
                     fecha_hora: this.agregar_ventas.fecha_hora,
+                    productos: this.agregar_ventas.productos,
                     estado: this.agregar_ventas.estado,
-                    cantidad: this.agregar_ventas.cantidad,
-                    total: this.agregar_ventas.total,
-                });
-                this.ver_ventas();
-            }
-            catch (error) {
-                console.error(error);
-            }
-        },
-        async Editar_ventas() {
-            try {
-                axios.put("https://backend-phi-gules.vercel.app/crud-ventas", {
-                    id: this.agregar_ventas.id,
-                    id_stock: this.agregar_ventas.id_stock,
-                    fecha_hora: this.agregar_ventas.fecha_hora,
-                    estado: this.agregar_ventas.estado,
-                    cantidad: this.agregar_ventas.cantidad,
                     total: this.agregar_ventas.total,
                 });
                 this.ver_ventas();
@@ -191,6 +146,7 @@ export default {
                 axios.delete("https://backend-phi-gules.vercel.app/crud-ventas", {
                     params: {
                         id: this.eliminar_ventas_id
+                        fecha: this.fecha
                     }
                 });
                 this.ver_ventas();
@@ -199,27 +155,12 @@ export default {
                 console.error(error);
             }
         },
-        editar_ventas_input(item) {
-            this.editar_ventas.id = item.id;
-            this.editar_ventas.id_stock = item.id_stock;
-            this.editar_ventas.fecha_hora = item.fecha_hora;
-            this.editar_ventas.estado = item.estado;
-            this.editar_ventas.cantidad = item.cantidad;
-            this.editar_ventas.total = item.total
-        },
         agregar_true() {
             this.boton_agregar = !this.boton_agregar;
-            this.boton_editar = false;
-            this.boton_eliminar = false;
-        },
-        editar_true() {
-            this.boton_editar = !this.boton_editar;
-            this.boton_agregar = false;
             this.boton_eliminar = false;
         },
         eliminar_true() {
             this.boton_eliminar = !this.boton_eliminar;
-            this.boton_editar = false;
             this.boton_agregar = false;
         },
     },

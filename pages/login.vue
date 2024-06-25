@@ -50,7 +50,7 @@ export default {
         this.password = "";
         this.state = true;
         this.$bus.$emit("activador", this.state);
-        localStorage.setItem("token", true);
+        localStorage.setItem("token", result.data.token);
         return navigateTo("/panel-general");
       }
     },
