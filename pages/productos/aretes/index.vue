@@ -109,15 +109,15 @@
               ver de menor a mayor precio
             </button>
             <br />
-            <NuxtLink to="/productos" class="link"> 
-              Productos ({{ productos_totales }}) 
+            <NuxtLink to="/productos" class="link">
+              Productos ({{ productos_totales }})
             </NuxtLink>
             <br />
             <NuxtLink to="/productos/anillos" class="link">
               Anillos ({{ anillos_totales }})
             </NuxtLink>
             <br />
-            <NuxtLink to="/productos/aretes" class="link"> 
+            <NuxtLink to="/productos/aretes" class="link">
               Aretes ({{ aretes_totales }})
             </NuxtLink>
             <br />
@@ -141,23 +141,21 @@
               class="card"
               :to="producto.url"
             >
-              <div v-for="fotoproducto in producto.fotos" :key="fotoproducto">
-                <picture>
-                  <source
-                    :srcset="fotoproducto.srcset1"
-                    class="imagen"
-                    style="width: 100%; height: 250px; object-fit: contain"
-                    :alt="producto.titulo"
-                    loading="lazy"
-                  />
-                  <img
-                    :src="fotoproducto.src1"
-                    style="width: 100%; height: 250px; object-fit: contain"
-                    :alt="producto.titulo"
-                    loading="lazy"
-                  />
-                </picture>
-              </div>
+              <picture>
+                <source
+                  :srcset="producto.fotos[0].srcset"
+                  class="imagen"
+                  style="width: 100%; height: 250px; object-fit: contain"
+                  :alt="producto.titulo"
+                  loading="lazy"
+                />
+                <img
+                  :src="producto.fotos[0].src"
+                  style="width: 100%; height: 250px; object-fit: contain"
+                  :alt="producto.titulo"
+                  loading="lazy"
+                />
+              </picture>
               <div class="container">
                 <br />
                 <h2 align="center" class="nomb">{{ producto.titulo }}</h2>
@@ -568,14 +566,14 @@ export default {
       this.currentPage = 1;
     },
     validate() {
-      this.buscar = this.buscar.replace(/[^a-zA-Z0-9]/g, '');
+      this.buscar = this.buscar.replace(/[^a-zA-Z0-9]/g, "");
     },
     Productos_aretes() {
-    const { $data } = this.$nuxt;
-    this.datos = $data;
+      const { $data } = this.$nuxt;
+      this.datos = $data;
 
-    this.productos = this.datos.filter((item) => item.tipo === "aretes");
-  }
+      this.productos = this.datos.filter((item) => item.tipo === "aretes");
+    },
   },
   created() {
     this.Productos_aretes();

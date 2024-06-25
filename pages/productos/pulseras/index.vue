@@ -142,23 +142,22 @@
               class="card"
               :to="producto.url"
             >
-              <div v-for="fotoproducto in producto.fotos" :key="fotoproducto">
-                <picture>
-                  <source
-                    :srcset="fotoproducto.srcset1"
-                    class="imagen"
-                    style="width: 100%; height: 250px; object-fit: contain"
-                    :alt="producto.titulo"
-                    loading="lazy"
-                  />
-                  <img
-                    :src="fotoproducto.src1"
-                    style="width: 100%; height: 250px; object-fit: contain"
-                    :alt="producto.titulo"
-                    loading="lazy"
-                  />
-                </picture>
-              </div>
+              <picture>
+                <source
+                  :srcset="producto.fotos[0].srcset"
+                  class="imagen"
+                  style="width: 100%; height: 250px; object-fit: contain"
+                  :alt="producto.titulo"
+                  loading="lazy"
+                />
+                <img
+                  :src="producto.fotos[0].src"
+                  style="width: 100%; height: 250px; object-fit: contain"
+                  :alt="producto.titulo"
+                  loading="lazy"
+                />
+              </picture>
+
               <div class="container">
                 <br />
                 <h2 align="center" class="nomb">{{ producto.titulo }}</h2>
@@ -575,7 +574,7 @@ export default {
       const { $data } = this.$nuxt;
       this.datos = $data;
 
-      this.productos = this.datos.filter((item) => item.tipo === "collares");
+      this.productos = this.datos.filter((item) => item.tipo === "pulseras");
     },
   },
   created() {

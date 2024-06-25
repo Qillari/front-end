@@ -90,6 +90,7 @@
                     <th>PRECIO_SIN_DESCUENTO</th>
                     <th>PRECIO</th>
                     <th>URL</th>
+                    <th>FOTOS</th>
                     <th>ACCIONES</th>
                 </tr>
             </thead>
@@ -104,6 +105,7 @@
                     <td>{{ item.precio_sin_descuento }}</td>
                     <td>{{ item.precio }}</td>
                     <td>{{ item.url }}</td>
+                    <td> {{ item.fotos }}</td>
                     <td>
                         <button class="btn btn-primary" @click="editar_producto_input(item)">Editar</button>
                     </td>
@@ -154,7 +156,8 @@ export default {
                 cantidad: "",
                 precio_sin_descuento: "",
                 precio: "",
-                url: ""
+                url: "",
+                fotos: []
             },
             editar_producto: {
                 id: "",
@@ -165,7 +168,8 @@ export default {
                 cantidad: "",
                 precio_sin_descuento: "",
                 precio: "",
-                url: ""
+                url: "",
+                fotos: []
             },
             eliminar_producto_id: ""
         };
@@ -195,6 +199,7 @@ export default {
                     precio_sin_descuento: this.agregar_producto.precio_sin_descuento,
                     precio: this.agregar_producto.precio,
                     url: this.agregar_producto.url,
+                    fotos: this.agregar_producto.fotos
                 });
                 this.ver_productos();
             }
@@ -214,6 +219,7 @@ export default {
                     precio_sin_descuento: this.editar_producto.precio_sin_descuento,
                     precio: this.editar_producto.precio,
                     url: this.editar_producto.url,
+                    fotos: this.editar_producto.fotos
                 });
                 this.ver_productos();
             }
@@ -244,6 +250,7 @@ export default {
             this.editar_producto.precio_sin_descuento = item.precio_sin_descuento;
             this.editar_producto.precio = item.precio;
             this.editar_producto.url = item.url;
+            this.editar_producto.fotos = item.fotos;
         },
         agregar_true() {
             this.boton_agregar = !this.boton_agregar;

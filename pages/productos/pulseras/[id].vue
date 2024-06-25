@@ -208,27 +208,8 @@ export default {
       this.producto.descripcion = this.dato.descripcion;
       this.producto.price = this.dato.precio;
       this.producto.descuento = this.dato.precio_sin_descuento;
-
-      const nuevaFoto = {
-        src: this.dato.fotos[0].src1,
-        srcset: this.dato.fotos[0].srcset1,
-      };
-      this.producto.fotos.push(nuevaFoto);
-      if (this.dato.fotos[0].src2 && this.dato.fotos[0].src2 !== "") {
-        const nuevaFoto = {
-          src: this.dato.fotos[0].src2,
-          srcset: this.dato.fotos[0].srcset2,
-        };
-        this.dato.fotos.push(nuevaFoto);
-      }
-      if (this.dato.fotos[0].src3 && this.dato.fotos[0].src3 !== "") {
-        const nuevaFoto = {
-          src: this.dato.fotos[0].src3,
-          srcset: this.dato.fotos[0].srcset3,
-        };
-        this.producto.fotos.push(nuevaFoto);
-      }
       this.producto.stock = this.dato.cantidad;
+      this.producto.fotos = this.dato.fotos;
       this.producto.selectedImage = this.producto.fotos[0];
     },
   },

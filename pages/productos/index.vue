@@ -112,14 +112,14 @@
             <br />
             <br />
             <NuxtLink to="/productos" class="link">
-              Productos ({{ productos_totales }}) 
+              Productos ({{ productos_totales }})
             </NuxtLink>
             <br />
             <NuxtLink to="/productos/anillos" class="link">
               Anillos ({{ anillos_totales }})
             </NuxtLink>
             <br />
-            <NuxtLink to="/productos/aretes" class="link"> 
+            <NuxtLink to="/productos/aretes" class="link">
               Aretes ({{ aretes_totales }})
             </NuxtLink>
             <br />
@@ -143,29 +143,41 @@
               class="card"
               :to="producto.url"
             >
-            <div v-for="fotoproducto in producto.fotos" :key="fotoproducto">
               <picture>
                 <source
-                  :srcset="fotoproducto.srcset1"
+                  :srcset="producto.fotos[0].srcset"
                   class="imagen"
                   style="width: 100%; height: 250px; object-fit: contain"
                   :alt="producto.nombre"
                   loading="lazy"
                 />
                 <img
-                  :src="fotoproducto.src1"
+                  :src="producto.fotos[0].src"
                   style="width: 100%; height: 250px; object-fit: contain"
                   :alt="producto.nombre"
                   loading="lazy"
                 />
               </picture>
-            </div>
               <div class="container">
                 <br />
                 <h2 align="center" class="nomb">{{ producto.titulo }}</h2>
-                <div style="display: flex; justify-content: center;">
-                  <p align="center" style="color: grey; text-decoration: line-through; margin: 0 10px;">{{ producto.precio_sin_descuento }}</p>
-                  <p align="center" style="color: black; font-size: 35px; margin: 0">S/.{{ producto.precio }}</p>
+                <div style="display: flex; justify-content: center">
+                  <p
+                    align="center"
+                    style="
+                      color: grey;
+                      text-decoration: line-through;
+                      margin: 0 10px;
+                    "
+                  >
+                    {{ producto.precio_sin_descuento }}
+                  </p>
+                  <p
+                    align="center"
+                    style="color: black; font-size: 35px; margin: 0"
+                  >
+                    S/.{{ producto.precio }}
+                  </p>
                 </div>
                 <br />
               </div>
@@ -495,7 +507,7 @@ export default {
       );
     },
     validate() {
-      this.buscar = this.buscar.replace(/[^a-zA-Z0-9]/g, '');
+      this.buscar = this.buscar.replace(/[^a-zA-Z0-9]/g, "");
     },
     Total_productos() {
       const { $data } = this.$nuxt;
@@ -508,11 +520,19 @@ export default {
       this.datos = $data;
 
       this.productos_totales = this.datos.length;
-      this.anillos_totales = this.datos.filter((item) => item.tipo === "anillos").length;
-      this.aretes_totales = this.datos.filter((item) => item.tipo === "aretes").length;
-      this.collares_totales = this.datos.filter((item) => item.tipo === "collares").length;
-      this.pulseras_totales = this.datos.filter((item) => item.tipo === "pulseras").length;
-    }
+      this.anillos_totales = this.datos.filter(
+        (item) => item.tipo === "anillos"
+      ).length;
+      this.aretes_totales = this.datos.filter(
+        (item) => item.tipo === "aretes"
+      ).length;
+      this.collares_totales = this.datos.filter(
+        (item) => item.tipo === "collares"
+      ).length;
+      this.pulseras_totales = this.datos.filter(
+        (item) => item.tipo === "pulseras"
+      ).length;
+    },
   },
   created() {
     this.Total_productos();
