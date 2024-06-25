@@ -547,6 +547,14 @@ export default {
                 })
                 .then((response) => {
                   if (response.data.status == "approved") {
+                    axios.post(
+                      "https://backend-phi-gules.vercel.app/venta-checkout",
+                      {
+                        carrito: this.carrito,
+                        precio_total: this.preciototal,
+                      }
+                    );
+
                     axios
                       .post("https://backend-phi-gules.vercel.app/correo", {
                         carrito: this.carrito,
@@ -569,14 +577,13 @@ export default {
                         console.log(error);
                         this.loading = false;
                       });
-                  } 
-                  else if (response.data.status == "rejected") {
+                  } else if (response.data.status == "rejected") {
                     this.loading = false;
                     this.rechazado = true;
                     setTimeout(() => {
                       this.rechazado = false;
                     }, 5000);
-                  };
+                  }
                 })
                 .catch((error) => {
                   console.log(error);
@@ -673,6 +680,13 @@ export default {
                 })
                 .then((response) => {
                   if (response.data.status == "approved") {
+                    axios.post(
+                      "https://backend-phi-gules.vercel.app/venta-checkout",
+                      {
+                        carrito: this.carrito,
+                        precio_total: this.preciototal,
+                      }
+                    );
                     axios
                       .post("https://backend-phi-gules.vercel.app/correo", {
                         carrito: this.carrito,
@@ -695,14 +709,13 @@ export default {
                         console.log(error);
                         this.loading = false;
                       });
-                  } 
-                  else if (response.data.status == "rejected") {
+                  } else if (response.data.status == "rejected") {
                     this.loading = false;
                     this.rechazado = true;
                     setTimeout(() => {
                       this.rechazado = false;
                     }, 5000);
-                  };
+                  }
                 })
                 .catch((error) => {
                   console.log(error);
