@@ -1,5 +1,13 @@
 <template>
   <div>
+    <div class="alert alert-error" role="alert" v-if="error">
+      Hubo un error
+      <div class="progress-bar"></div>
+    </div>
+    <div class="alert alert-error" role="alert" v-if="rechazado">
+      Se rechazo el pago
+      <div class="progress-bar"></div>
+    </div>
     <Loading v-if="loading" />
     <div class="background">
       <div
@@ -279,6 +287,10 @@
   .width1 {
     width: 100%;
   }
+  .alert-fixed {
+    width: 100%;
+    right: 0;
+  }
 }
 
 @media screen and (min-width: 601px) {
@@ -383,6 +395,43 @@ button {
 .input-select {
   display: flex;
 }
+
+.alert-fixed {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  width: 30%;
+  height: 40px;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease-in-out;
+  background-color: #f44336; /* Rojo para alert-error */
+  color: white;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.alert-fixed .progress-bar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 5px;
+  width: 100%;
+  background-color: #4caf50; /* Verde para la barra de progreso */
+  animation: progress 5s linear forwards;
+}
+
+@keyframes progress {
+  from {
+    width: 100%;
+  }
+  to {
+    width: 0;
+  }
+}
 </style>
 
 <script>
@@ -398,6 +447,8 @@ export default {
       email: "",
       telefono: "",
       direccion: "",
+      error: false,
+      rechazado: false,
       carrito: [],
       form: false,
       yape: false,
@@ -573,8 +624,6 @@ export default {
             onFormMounted: (error) => {
               if (error)
                 return console.warn("Form Mounted handling error: ", error);
-              console.log("Form mounted");
-              localStorage.setItem("mercadopago1", true);
             },
             onSubmit: async (event) => {
               event.preventDefault();
@@ -610,29 +659,43 @@ export default {
                   },
                 })
                 .then((response) => {
-                  console.log(response.data.status);
-                  axios
-                    .post("https://backend-phi-gules.vercel.app/correo", {
-                      carrito: this.carrito,
-                      email: this.email,
-                      street_name: this.name_street1,
-                      preciototal: this.preciototal,
-                    })
-                    .then((response) => {
-                      console.log(response);
-                      localStorage.removeItem("carrito");
-                      localStorage.removeItem("precioTotal");
-                      this.carrito = [];
-                      this.preciototal = 0;
-                      this.$bus.$emit("productoEliminado", this.carrito);
-                      this.$bus.$emit("precioeliminado", this.preciototal);
-                      this.$router.push("/pago");
-                      this.loading = false;
-                    });
+                  if (response.data.status == "approved") {
+                    axios
+                      .post("https://backend-phi-gules.vercel.app/correo", {
+                        carrito: this.carrito,
+                        email: this.email,
+                        street_name: this.name_street1,
+                        preciototal: this.preciototal,
+                      })
+                      .then((response) => {
+                        console.log(response);
+                        localStorage.removeItem("carrito");
+                        localStorage.removeItem("precioTotal");
+                        this.carrito = [];
+                        this.preciototal = 0;
+                        this.$bus.$emit("productoEliminado", this.carrito);
+                        this.$bus.$emit("precioeliminado", this.preciototal);
+                        this.$router.push("/pago");
+                        this.loading = false;
+                      })
+                      .catch((error) => {
+                        console.log(error);
+                        this.loading = false;
+                      });;
+                  } else if (response.data.status == "rejected") {
+                    this.rechazado = true
+                    setTimeout(() => {
+                      this.rechazado = false;
+                    }, 5000);
+                  }
                 })
                 .catch((error) => {
                   console.log(error);
                   this.loading = false;
+                  this.error = true;
+                  setTimeout(() => {
+                      this.error = false;
+                    }, 5000);
                 });
             },
           },
