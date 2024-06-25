@@ -659,6 +659,7 @@ export default {
                   },
                 })
                 .then((response) => {
+                  consonsole.log(response.data.status);
                   if (response.data.status == "approved") {
                     axios
                       .post("https://backend-phi-gules.vercel.app/correo", {
@@ -681,21 +682,22 @@ export default {
                       .catch((error) => {
                         console.log(error);
                         this.loading = false;
-                      });;
-                  } else if (response.data.status == "rejected") {
-                    this.rechazado = true
+                      });
+                  } 
+                  else if (response.data.status == "rejected") {
+                    this.rechazado = true;
                     setTimeout(() => {
                       this.rechazado = false;
                     }, 5000);
-                  }
+                  };
                 })
                 .catch((error) => {
                   console.log(error);
                   this.loading = false;
                   this.error = true;
                   setTimeout(() => {
-                      this.error = false;
-                    }, 5000);
+                    this.error = false;
+                  }, 5000);
                 });
             },
           },
