@@ -402,7 +402,7 @@ button {
   right: 20px;
   width: 30%;
   height: 40px;
-  z-index: 1000;
+  z-index: 100000000000;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -546,7 +546,7 @@ export default {
                   },
                 })
                 .then((response) => {
-                  console.log("hola");
+                  console.log("hola1");
                   if (response.data.status == "approved") {
                     axios
                       .post("https://backend-phi-gules.vercel.app/correo", {
@@ -572,6 +572,7 @@ export default {
                       });
                   } 
                   else if (response.data.status == "rejected") {
+                    this.loading = false;
                     this.rechazado = true;
                     setTimeout(() => {
                       this.rechazado = false;
@@ -697,6 +698,7 @@ export default {
                       });
                   } 
                   else if (response.data.status == "rejected") {
+                    this.loading = false;
                     this.rechazado = true;
                     setTimeout(() => {
                       this.rechazado = false;
